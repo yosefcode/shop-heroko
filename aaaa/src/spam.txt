@@ -1,0 +1,76 @@
+// import { Slider, Switch as SwitchToggle } from "antd";
+// import { OmitProps } from "antd/lib/transfer/ListBody";
+
+  // const [disabled, setDisabled] = useState(false);
+
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://quilt-flax-chemistry.glitch.me/products/")
+  //     .then((res) => {
+  //       console.log(res);
+  //       // const productsArray = res.data;
+  //       // console.log(productsArray);
+  //       // setProducts(productsArray);
+  //       setProducts(res.data);
+  //       console.log(products);
+  //     });
+  // }, []);
+
+  // function onChange(value) {
+  //   console.log("onChange: ", value);
+  // }
+
+  // function onAfterChange(value) {
+  //   console.log("onAfterChange: ", value);
+  // const min = value[0];
+  // const max = value[1];
+
+  // const newproduct = products.filter((product) => {
+  //   console.log(product.price);
+
+  //   return min <= product.price && max >= product.price;
+  // });
+
+  // setProducts(newproduct);
+  // }
+  // const { aa } = useParams();
+  // const removeProduct = () => {
+  //   axios
+  //     .delete("http://localhost:8000/todos/ " + useParams.id)
+  //     .then((res) => console.log(res.data));
+  // };
+  // const pluspro = () => {
+  //   return setitems(items + 1);
+  // };
+
+
+            {/* <div>
+              Disabled:{" "}
+              <SwitchToggle
+                size="small"
+                checked={disabled}
+                onChange={setDisabled}
+              />
+            </div>
+            <div className="slider">
+              <Slider
+                range
+                step={10}
+                value={[0, 100]}
+                onChange={onChange}
+                onAfterChange={onAfterChange}
+              />
+            </div> */}
+
+                // onAfterChange={onAfterChange}
+
+
+                // reset={() => {
+                //   products.find((prod1) => (prod1.quantity = product.quantity));
+                // }}
+
+
+                // removecartproduct={() => {
+                //   return setCartproduct(items1 --);
+                // }}

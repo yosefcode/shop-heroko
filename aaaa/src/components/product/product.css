@@ -1,0 +1,64 @@
+.product {
+  display: inline-block;
+  width: 200px;
+  height: 280px;
+  border-style: groove;
+  border-color: rgb(110, 12, 12);
+  border-width: 3px;
+  margin: 13px;
+  margin-top: 10px;
+  background-color: rgb(255, 253, 224);
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+}
+.product h3 {
+  font-weight: 700;
+
+  font-size: 22px;
+  line-height: 19px;
+  margin-top: 10px;
+}
+.product h5 {
+  font-size: 16px;
+  line-height: 19px;
+  margin-top: 10px;
+}
+.product h6 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+}
+.product img {
+  width: 180px;
+  height: 100px;
+  border-radius: 15px;
+  margin-top: -10px;
+}
+.product button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 0);
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+}
+
+.product button:hover {
+  background-color: #fbffdb;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+.product .plus {
+  margin-left: 20px;
+}
+.product .minus {
+  margin-right: 20px;
+}

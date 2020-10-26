@@ -1,0 +1,21 @@
+.description {
+  width: 280px;
+  height: 570px;
+  border-width: 5px;
+  border-color: blue;
+  border-style: groove;
+  background-color: rgb(255, 253, 224);
+  position: absolute;
+  text-align: center;
+  font-size: small;
+  margin-top: -670px;
+  left: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+.description img {
+  width: 100px;
+  height: 80px;
+}

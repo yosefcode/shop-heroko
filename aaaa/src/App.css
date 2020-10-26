@@ -1,0 +1,114 @@
+@import "~antd/dist/antd.css";
+
+.App {
+  text-align: center;
+  width: 1300px;
+  height: auto;
+  background-color: rgb(31, 11, 11);
+  padding: 40px;
+  margin: 0 auto;
+  color: #000;
+  box-shadow: 0 0 30px rgb(168, 19, 19);
+  cursor: auto;
+  position: relative;
+}
+.App .barright {
+  position: absolute;
+  right: 1040px;
+  width: 230px;
+  height: auto;
+}
+.App .link:link {
+  text-decoration: none;
+}
+.App .link:hover {
+  cursor: auto;
+}
+.App .slider {
+  padding: 2px 15px;
+  text-align: center;
+  margin-right: 25%;
+  width: 50%;
+  height: 32px;
+  background-color: rgb(255, 253, 224);
+  border-radius: 20px;
+}
+.App .cart {
+  width: 235px;
+  min-height: 300px;
+  height: auto;
+  border: 3px rgb(146, 82, 82) solid;
+  background-color: rgb(255, 253, 224);
+  margin-top: 10px;
+  right: 25px;
+  position: absolute;
+  border-radius: 20px;
+  padding-bottom: 10px;
+}
+.App .cartmongo {
+  width: 235px;
+  min-height: 300px;
+  height: auto;
+  border: 3px rgb(146, 82, 82) solid;
+  background-color: rgb(255, 253, 224);
+  margin-top: 400px;
+  right: 25px;
+  position: absolute;
+  border-radius: 20px;
+  padding-bottom: 10px;
+}
+.App .numcartall {
+  position: absolute;
+  right: 20%;
+  top: 20px;
+}
+
+.App .imgcart {
+  width: 60px;
+  height: 50px;
+  border-radius: 50px;
+  position: absolute;
+  right: 30px;
+}
+.App .numcart {
+  color: rgb(245, 245, 245);
+  font-size: 14px;
+  background-color: rgb(199, 0, 0);
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  border-radius: 30px;
+  right: 45px;
+  top: -8px;
+}
+
+.App .productall {
+  width: 60%;
+  height: auto;
+  border-style: groove;
+  border-color: rgb(95, 2, 2);
+  border-width: 1px;
+  margin: 20px auto;
+  border-radius: 15px;
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  animation-name: example;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  color: rgb(255, 255, 255);
+}
+@keyframes example {
+  0% {
+    background-color: rgb(77, 52, 52);
+  }
+  25% {
+    background-color: rgb(61, 61, 33);
+  }
+  50% {
+    background-color: rgb(37, 37, 68);
+  }
+  100% {
+    background-color: rgb(77, 50, 50);
+  }
+}

@@ -1,0 +1,39 @@
+.header {
+  position: relative;
+  width: 60%;
+  height: 120px;
+  border-style: groove;
+  border-color: rgb(120, 120, 170);
+  border-width: 3px;
+  background-color: rgb(255, 253, 224);
+  border-radius: 15px;
+  margin: 0 auto;
+  color: black;
+}
+.header h3 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 19px;
+  margin-top: 20px;
+}
+.header h5 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 19px;
+}
+
+.header .imgr {
+  width: 150px;
+  height: 100px;
+  margin-top: -85px;
+  position: absolute;
+  transform: scaleX(-1);
+  left: 0px;
+}
+.header .imgl {
+  width: 150px;
+  height: 100px;
+  margin-top: -85px;
+  position: absolute;
+  right: 0px;
+}
