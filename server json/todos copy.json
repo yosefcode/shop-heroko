@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTa2HMSk-fT000SkEM3QIHQ5KXDkeN8x__Q2A&usqp=CAU",
+    "title": "כורסא",
+    "quantity": 12,
+    "price": 1000,
+    "items": 0
+  },
+  {
+    "id": 2,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT4waBT7uVSdq4gcU6Jhwh2nxi4Z60PbeAb_g&usqp=CAU",
+    "title": "חדר שינה",
+    "quantity": 17,
+    "price": 2000,
+    "items": 0
+  },
+  {
+    "id": 3,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRz-mUTVhQ3jPQEf5w5EKt1xwQD5s_-7sjHDQ&usqp=CAU",
+    "title": "סלון",
+    "quantity": 8,
+    "price": 2500,
+    "items": 0
+  },
+  {
+    "id": 4,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSK3Hx_OhEbVLGz6fMo61PQorxhvPxnWsoEYQ&usqp=CAU",
+    "title": "פינת אוכל",
+    "quantity": 23,
+    "price": 3500,
+    "items": 0
+  },
+  {
+    "id": 5,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgzHN2sSKtg3J1uXLTznecsp8kUYEe8VIo4w&usqp=CAU",
+    "title": "חדר ילדים",
+    "quantity": 6,
+    "price": 5000,
+    "items": 0
+  },
+  {
+    "id": 6,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRH9Cm_0JutfkKWCK1MocWhtLTPDUakrqKAlg&usqp=CAU",
+    "title": "ארונות",
+    "quantity": 15,
+    "price": 4000,
+    "items": 0
+  }
+]
