@@ -26,7 +26,7 @@ const App = (props) => {
   const [cartmongo, setCartmongo] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:7000/api/products/").then((res) => {
+    axios.get("http://localhost:7000/api/products/"||"/api/products/").then((res) => {
       setProducts(res.data);
       console.log(res.data);
     });
