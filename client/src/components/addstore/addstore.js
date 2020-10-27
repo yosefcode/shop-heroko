@@ -10,7 +10,7 @@ const Addstore = () => {
 
   const addProduct = () => {
     axios
-      .post("http://localhost:7000/api/products/"||"/api/products/", product)
+      .post("/api/products/", product)
       .then((res) => console.log(res.data));
   };
 

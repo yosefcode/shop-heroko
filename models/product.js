@@ -40,7 +40,7 @@ const product3 = new Products({
 const product4 = new Products({
   image:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSK3Hx_OhEbVLGz6fMo61PQorxhvPxnWsoEYQ&usqp=CAU",
-  title: "פינת אttttוכל",
+  title: "פינת אוכל",
   quantity: 22,
   price: 1200,
   items: 0,

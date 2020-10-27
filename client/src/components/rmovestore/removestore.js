@@ -11,7 +11,7 @@ const Removestore = (props) => {
 
   const removeProduct = () => {
     axios
-      .delete("http://localhost:7000/api/products/"+ productId||"/api/products/" + productId)
+      .delete("/api/products/" + productId)
       .then((res) => console.log(res.data));
   };
 

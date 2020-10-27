@@ -11,7 +11,7 @@ const Search = (props) => {
   const searchToServer = async () => {
     // if (value === true) {
     await axios
-      .get(`http://127.0.0.1:7000/api/products/search/?search=${value}`||`/api/products/search/?search=${value}`)
+      .get(`/api/products/search/?search=${value}`)
       .then((res) => {
         setProducts(res.data);
         console.log(res.data);
