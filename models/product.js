@@ -64,11 +64,11 @@ const product6 = new Products({
   items: 0,
 });
 
-product1.save();
-product2.save();
-product3.save();
-product4.save();
-product5.save();
-product6.save();
+// product1.save();
+// product2.save();
+// product3.save();
+// product4.save();
+// product5.save();
+// product6.save();
 
 module.exports = Products;
