@@ -40,7 +40,7 @@ const product3 = new Products({
 const product4 = new Products({
   image:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSK3Hx_OhEbVLGz6fMo61PQorxhvPxnWsoEYQ&usqp=CAU",
-  title: "פינת אוכל",
+  title: "פינת אttttוכל",
   quantity: 22,
   price: 1200,
   items: 0,
@@ -64,11 +64,11 @@ const product6 = new Products({
   items: 0,
 });
 
-// product1.save();
-// product2.save();
-// product3.save();
-// product4.save();
-// product5.save();
-// product6.save();
+product1.save();
+product2.save();
+product3.save();
+product4.save();
+product5.save();
+product6.save();
 
 module.exports = Products;
