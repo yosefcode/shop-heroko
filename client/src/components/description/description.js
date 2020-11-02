@@ -9,7 +9,7 @@ const Description = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8000/todos/" + { id }).then((res) => {
+    axios.get("/api/products/" + { id }).then((res) => {
       setProducts(res.data);
       // console.log(res.data);
     });

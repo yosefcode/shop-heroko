@@ -9,7 +9,7 @@ const Search = (props) => {
   const [value, setValue] = useState("");
 
   const searchToServer = async () => {
-    // if (value === true) {
+    // if (valueSearch === true) {
     await axios
       .get(`/api/products/search/?search=${value}`)
       .then((res) => {

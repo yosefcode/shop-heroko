@@ -84,14 +84,14 @@ const App = (props) => {
               />
             ))}
           </div>
-          <div className="cartmongo">
+          {/* <div className="cartmongo">
             <div className="numcartall">
               <img className="imgcart" src={cartimg} alt="sory" />
               <div className="numcart">{cart}</div>
             </div>
             <br />
 
-            {/* {cartmongo.map((productcart) => (
+            {cartmongo.map((productcart) => (
               <Cartmongo
                 key={productcart.id}
                 id={productcart.id}
@@ -113,8 +113,8 @@ const App = (props) => {
                   )
                 }
               />
-            ))} */}
-          </div>
+            ))}
+          </div> */}
 
           <Header />
           <div className="productall">
