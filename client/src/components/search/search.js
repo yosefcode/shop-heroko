@@ -11,7 +11,7 @@ const Search = (props) => {
   const searchToServer = async () => {
     // if (valueSearch === true) {
     await axios
-      .get(`/api/products/search/?search=${value}`)
+      .get(`/api/search/?search=${value}`)
       .then((res) => {
         setProducts(res.data);
         console.log(res.data);
@@ -27,7 +27,7 @@ const Search = (props) => {
       <div>
         <input
           type="text"
-          onInput={(e) => (valueSearch = e.target.value)}
+          onChange={(e) => (valueSearch = e.target.value)}
         ></input>
         <button
           className="btn"
@@ -35,7 +35,7 @@ const Search = (props) => {
             setValue(valueSearch);
             console.log(value);
             await searchToServer();
-            // if (searchToServer !== true) {
+            // if (value === false) {
             setLoaded(true);
             // }
           }}

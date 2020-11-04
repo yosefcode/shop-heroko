@@ -56,7 +56,7 @@ app.delete("/api/products/:id", async (req, res) => {
   }
 });
 
-app.get("/api/products/search/", async (req, res) => {
+app.get("/api/search/", async (req, res) => {
   console.log("QUERY:", req.query.search);
   const { search } = req.query;
 
