@@ -56,8 +56,8 @@ const Search = (props) => {
                 <h2> {product.title}</h2>
                 <img className="imgsearch" src={product.image} alt="" />
                 <br />
-                <h3>quantity : {product.quantity}</h3>
-                <h3>price : {product.price}</h3>
+                <h3>תיאור : {product.description}</h3>
+                <h3>מחיר : {product.price}</h3>
               </div>
             ))}
           </div>

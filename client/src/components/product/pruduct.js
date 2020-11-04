@@ -30,10 +30,10 @@ const Product = (props) => {
       </Link>
       <br />
       <br />
-      <h6> {props.title}</h6>
-      <h6>quantity : {quantity}</h6>
-      <h6>price : {props.price}</h6>
-      <h6>
+      <h5> {props.title}</h5>
+      <h6>כמות מוצרים : {quantity}</h6>
+      <h6>מחיר : {props.price}</h6>
+      <h5>
         <button
           className="plus"
           disabled={quantity === "אזל מהמלאי" || 0}
@@ -45,7 +45,7 @@ const Product = (props) => {
         <button className="minus" disabled={props.items === 0} onClick={minus}>
           -
         </button>
-      </h6>
+      </h5>
     </div>
   );
 };
