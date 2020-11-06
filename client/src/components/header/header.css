@@ -30,6 +30,30 @@
   transform: scaleX(-1);
   left: 0px;
 }
+.header .what {
+  width: 25px;
+  height: 25px;
+  margin-top: -30px;
+  position: absolute;
+  transform: scaleX(-1);
+  left: 210px;
+}
+.header .mail {
+  width: 25px;
+  height: 25px;
+  margin-top: -30px;
+  position: absolute;
+  transform: scaleX(-1);
+  left: 170px;
+}
+.header .call {
+  width: 25px;
+  height: 25px;
+  margin-top: -30px;
+  position: absolute;
+  transform: scaleX(-1);
+  left: 250px;
+}
 .header .imgl {
   width: 150px;
   height: 100px;

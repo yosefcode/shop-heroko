@@ -12,7 +12,10 @@ const products = require("./product");
 
 // שליחה לDB אטלס
 function connectToDb() {
-  return mongoose.connect("mongodb+srv://dbshop:GKSiW8g4jXqkxKt@cluster0.zq2sn.mongodb.net/dbshop?retryWrites=true&w=majority", {
+  return mongoose.connect(
+    // "mongodb+srv://dbshop:GKSiW8g4jXqkxKt@cluster0.zq2sn.mongodb.net/dbshop?retryWrites=true&w=majority"
+    process.env.DB_URL,
+     {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

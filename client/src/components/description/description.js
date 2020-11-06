@@ -5,13 +5,14 @@ import "./description.css";
 
 const Description = () => {
   const { id } = useParams();
-  // console.log(id);
+  console.log(id);
 
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
-    axios.get("/api/products/" + { id }).then((res) => {
+    axios.get("/api/products/" +  id ).then((res) => {
       setProducts(res.data);
-      // console.log(res.data);
+      console.log(id);
     });
   });
 

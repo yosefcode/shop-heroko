@@ -10,13 +10,13 @@ import axios from "axios";
 import {
   BrowserRouter as Router,
   Switch,
-  // Route,
+  Route,
   Link,
   // useParams,
 } from "react-router-dom";
-// import Description from "./components/product/description";
+import Description from "./components/description/description";
 import Cart from "./components/cart/cart";
-import Cartmongo from "./components/cart mongo/cart";
+// import Cartmongo from "./components/cart mongo/cart";
 import cartimg from "./components/cart/cart.jpg";
 
 const App = (props) => {
@@ -44,11 +44,10 @@ const App = (props) => {
 
   return (
     <Router>
-      {/* <Route exact path="/"> */}
       <Link className="link" to="/">
         <div className="App" dir="rtl">
           <div className="barright">
-            <Search products={products} aaa={<Product />} />
+            <Search products={products}  />
             <Addstore />
             <Removestore products={products} />
             <Change products={products} />
@@ -192,7 +191,6 @@ const App = (props) => {
           </div>
         </div>
       </Link>
-      {/* </Route> */}
 
       {/* <Route exact path="/:id">
         <Description />

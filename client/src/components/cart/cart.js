@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./cart.css";
 import del from "../img/delete.png";
 

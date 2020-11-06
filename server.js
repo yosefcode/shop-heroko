@@ -3,16 +3,18 @@ const app = express();
 const { connectToDb, models } = require("./models");
 const cors = require("cors");
 const path = require("path");
+const dotenv = require("dotenv");
 
+dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
 
-const port = process.env.PORT || 7000 ;
+const port = process.env.PORT || 7000;
 
 connectToDb().then(async () => {
   app.listen(port, () => {
-    console.log("Server is running...");
+    console.log("Server is running port ", port);
   });
 });
 
@@ -25,6 +27,7 @@ app.get("/api/products/", async (req, res) => {
     res.status(500).send(err);
   }
 });
+
 
 app.post("/api/products/", async (req, res) => {
   const newproduct = new models.products({
@@ -58,14 +61,14 @@ app.delete("/api/products/:id", async (req, res) => {
 
 app.get("/api/search/", async (req, res) => {
   console.log("QUERY:", req.query.search);
-  const { search } = req.query;
+  const  search  = req.query.search;
 
   const productsSearch = await models.products.find(
     { title: { $regex: search, $options: "i" } },
-    function (err, docs) {
-      console.log("Search");
-      console.log(docs);
-    }
+    // function (err, docs) {
+    //   console.log("Search");
+    //   console.log(docs);
+    // }
   );
   try {
     res.send(productsSearch);

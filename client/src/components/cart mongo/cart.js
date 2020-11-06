@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./cart.css";
-import del from "../img/delete.png";
+// import del from "../img/delete.png";
 
 const Cartmongo = (props) => {
   const [products, setProducts] = useState([]);
