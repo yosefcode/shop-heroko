@@ -1,9 +1,9 @@
 import React from "react";
 import "./header.css";
 import Store from "./img/store.png";
-import what from "./img/logo-whatsapp.svg";
+import what from "./img/WhatsApp.png";
 import call from "./img/call.svg";
-import mail from "./img/mail.svg";
+import mail from "./img/mail.png";
 
 const Header = () => {
   return (

@@ -43,7 +43,7 @@
   height: 25px;
   margin-top: -30px;
   position: absolute;
-  transform: scaleX(-1);
+  /* transform: scaleX(-1); */
   left: 170px;
 }
 .header .call {
