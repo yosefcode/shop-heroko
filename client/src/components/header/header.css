@@ -31,9 +31,9 @@
   left: 0px;
 }
 .header .what {
-  width: 25px;
-  height: 25px;
-  margin-top: -30px;
+  width: 30px;
+  height: 30px;
+  margin-top: -32px;
   position: absolute;
   transform: scaleX(-1);
   left: 210px;
