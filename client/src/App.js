@@ -28,7 +28,7 @@ const App = (props) => {
   useEffect(() => {
     axios.get("/api/products/").then((res) => {
       setProducts(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     });
   }, []);
 
@@ -47,7 +47,7 @@ const App = (props) => {
       <Link className="link" to="/">
         <div className="App" dir="rtl">
           <div className="barright">
-            <Search products={products}  />
+            <Search products={products} />
             <Addstore />
             <Removestore products={products} />
             <Change products={products} />

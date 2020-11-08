@@ -10,25 +10,27 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
 
-const port = process.env.PORT || 7000;
+const PORT = process.env.PORT || 7000;
+const URL = process.env.URL;
 
 connectToDb().then(async () => {
-  app.listen(port, () => {
-    console.log("Server is running port ", port);
+  app.listen(PORT, () => {
+    console.log("Server is running port ", PORT);
   });
 });
 
-app.get("/api/products/", async (req, res) => {
+app.get(URL, async (req, res) => {
   const products = await models.products.find();
 
-  const  search  = req.query.search;
+  const search = req.query.search;
 
   try {
-  if (search) {
-  const productsSearch = await models.products.find(
-    { title: { $regex: search, $options: "i" } }  );
-    res.send(productsSearch) 
-  } else {
+    if (search) {
+      const productsSearch = await models.products.find({
+        title: { $regex: search, $options: "i" },
+      });
+      res.send(productsSearch);
+    } else {
       res.send(products);
     }
   } catch (err) {
@@ -36,8 +38,7 @@ app.get("/api/products/", async (req, res) => {
   }
 });
 
-
-app.post("/api/products/", async (req, res) => {
+app.post(URL, async (req, res) => {
   const newproduct = new models.products({
     title: req.body.title,
     quantity: +req.body.quantity,
@@ -54,11 +55,11 @@ app.post("/api/products/", async (req, res) => {
   }
 });
 
-app.delete("/api/products/:id", async (req, res) => {
+app.delete(`${URL}:id`, async (req, res) => {
   try {
     const deleteproduct = await models.products.findByIdAndDelete(
       req.params.id
-      );
+    );
     console.log(req.params.id);
     if (!deleteproduct) res.status(404).send("No item found");
     res.status(200).send();
@@ -67,12 +68,10 @@ app.delete("/api/products/:id", async (req, res) => {
   }
 });
 
-
-
 // app.get("/api/search/", async (req, res) => {
 //   console.log("QUERY:", req.query.search);
 //   const  search  = req.query.search;
-  
+
 //   const productsSearch = await models.products.find(
 //     { title: { $regex: search, $options: "i" } },
 //     function (err, docs) {
@@ -87,12 +86,12 @@ app.delete("/api/products/:id", async (req, res) => {
 //   }
 // });
 
-                  // app.get("/api/products/", async (req, res) => {
-                  //   const products = await models.products.find();
-                  //   console.log("get");
-                  //   try {
-                  //     res.send(products);
-                  //   } catch (err) {
-                  //     res.status(500).send(err);
-                  //   }
-                  // });
+// app.get("/api/products/", async (req, res) => {
+//   const products = await models.products.find();
+//   console.log("get");
+//   try {
+//     res.send(products);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
