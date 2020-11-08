@@ -3,15 +3,14 @@ import "./search.css";
 import axios from "axios";
 
 const Search = (props) => {
-  let valueSearch = "";
   const [loaded, setLoaded] = useState(false);
   const [products, setProducts] = useState([]);
   const [value, setValue] = useState("");
 
   const searchToServer = async () => {
-    // if (valueSearch === true) {
+    // if (valueSearch == true) {
     await axios
-      .get(`/api/search/?search=${value}`)
+      .get(`/api/products/?search=${value}`)
       .then((res) => {
         setProducts(res.data);
         console.log(res.data);
@@ -21,44 +20,57 @@ const Search = (props) => {
     // }
   };
 
+  const valueSearch = (e) => {
+    setValue(e.target.value);
+    console.log(e.target.value);
+  }
+
   return (
     <div className="search">
       <div>חפש מוצר </div>
       <div>
         <input
           type="text"
-          onChange={(e) => (valueSearch = e.target.value)}
+          onChange={valueSearch}
         ></input>
         <button
           className="btn"
           onClick={async () => {
-            setValue(valueSearch);
-            console.log(value);
+                // if (value === true) {
+
             await searchToServer();
-            // if (value === false) {
             setLoaded(true);
-            // }
+    //             } else {
+    //   console.log("err");
+    // }
+
           }}
         >
           חפש
         </button>
         {loaded && (
-          <div className="opendiv">
+          <div >
             <button
+                      className="btn1"
+
               onClick={() => {
                 setLoaded(false);
+
               }}
             >
-              סגור
+              סגור חיפוש
             </button>
+            <br/>
             {products.map((product) => (
               <div className="productsearch">
-                <h2> {product.title}</h2>
-                <img className="imgsearch" src={product.image} alt="" />
-                <br />
-                {/* <h3>תיאור : {product.description}</h3> */}
-                <h3>מחיר : {product.price}</h3>
-              </div>
+
+             <div><img className="imgsearch" src={product.image} alt="" /></div>
+
+             <div>   <h3> {product.title}</h3>               </div>
+
+                <div>   <h6>מחיר : {product.price}</h6>               </div>
+
+               </div>
             ))}
           </div>
         )}

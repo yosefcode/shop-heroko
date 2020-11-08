@@ -20,9 +20,17 @@ connectToDb().then(async () => {
 
 app.get("/api/products/", async (req, res) => {
   const products = await models.products.find();
-  console.log("get");
+
+  const  search  = req.query.search;
+
   try {
-    res.send(products);
+  if (search) {
+  const productsSearch = await models.products.find(
+    { title: { $regex: search, $options: "i" } }  );
+    res.send(productsSearch) 
+  } else {
+      res.send(products);
+    }
   } catch (err) {
     res.status(500).send(err);
   }
@@ -50,7 +58,7 @@ app.delete("/api/products/:id", async (req, res) => {
   try {
     const deleteproduct = await models.products.findByIdAndDelete(
       req.params.id
-    );
+      );
     console.log(req.params.id);
     if (!deleteproduct) res.status(404).send("No item found");
     res.status(200).send();
@@ -59,20 +67,32 @@ app.delete("/api/products/:id", async (req, res) => {
   }
 });
 
-app.get("/api/search/", async (req, res) => {
-  console.log("QUERY:", req.query.search);
-  const  search  = req.query.search;
 
-  const productsSearch = await models.products.find(
-    { title: { $regex: search, $options: "i" } },
-    // function (err, docs) {
-    //   console.log("Search");
-    //   console.log(docs);
-    // }
-  );
-  try {
-    res.send(productsSearch);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+
+// app.get("/api/search/", async (req, res) => {
+//   console.log("QUERY:", req.query.search);
+//   const  search  = req.query.search;
+  
+//   const productsSearch = await models.products.find(
+//     { title: { $regex: search, $options: "i" } },
+//     function (err, docs) {
+//       console.log("Search");
+//       console.log(docs);
+//     }
+//   );
+//   try {
+//     res.send(productsSearch);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
+
+                  // app.get("/api/products/", async (req, res) => {
+                  //   const products = await models.products.find();
+                  //   console.log("get");
+                  //   try {
+                  //     res.send(products);
+                  //   } catch (err) {
+                  //     res.status(500).send(err);
+                  //   }
+                  // });

@@ -13,14 +13,11 @@ const Header = () => {
       <ion-icon name="logo-youtube"></ion-icon>
       <ion-icon src="/path/to/external/file.svg"></ion-icon>
       <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-      <h5>057-896-8754</h5>
+      <h5>058-411-2424</h5>
 
       <img className="what" src={what} alt="תמונה חסרה" onClick={ ()=>{
     window.open ( "https://wa.me/972584112424/")
 }}/>
-        {/* <img className="call" src={call} alt="תמונה חסרה" onClick={ ()=>{
-      window.open ("tel:0584112424")
-  }}/> */}
       <img className="call" src={call} alt="תמונה חסרה" onClick={ ()=>{
     window.open ( "tel:0584112424")
 }}/>
