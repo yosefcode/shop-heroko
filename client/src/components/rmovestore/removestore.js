@@ -30,7 +30,7 @@ const Removestore = (props) => {
         <button
           className="btn"
           onClick={() => {
-            if (password === "1234") {
+            if (password === process.env.REACT_APP_PASS) {
               document.getElementById("input1").value = "";
               document.getElementById("input1").placeholder = "נכנסת בהצלחה";
               setLoaded(true);
