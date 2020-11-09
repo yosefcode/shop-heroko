@@ -26,7 +26,7 @@ const App = (props) => {
   const [cartmongo, setCartmongo] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/products/").then((res) => {
+    axios.get(process.env.REACT_APP_URL).then((res) => {
       setProducts(res.data);
       // console.log(res.data);
     });

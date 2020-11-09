@@ -10,7 +10,7 @@ const Addstore = () => {
 
   const addProduct = () => {
     axios
-      .post("/api/products/", product)
+      .post(process.env.REACT_APP_URL, product)
       .then((res) => console.log(res.data));
   };
 
@@ -27,7 +27,7 @@ const Addstore = () => {
         <button
           className="btn"
           onClick={() => {
-            if (password === "1234") {
+            if (password === process.env.REACT_APP_PASS) {
               setLoaded(true);
               setOpen("close");
               document.getElementById("input").value = "";
