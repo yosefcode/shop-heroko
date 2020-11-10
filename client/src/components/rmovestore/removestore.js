@@ -12,7 +12,7 @@ const Removestore = (props) => {
   const removeProduct = () => {
     axios
       .delete(process.env.REACT_APP_URL + productId)
-      .then((res) => console.log(res.data));
+      .then((res) => console.log(res));
   };
 
   return (

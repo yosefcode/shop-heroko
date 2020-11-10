@@ -18,6 +18,7 @@ import Description from "./components/description/description";
 import Cart from "./components/cart/cart";
 // import Cartmongo from "./components/cart mongo/cart";
 import cartimg from "./components/cart/cart.jpg";
+import socketIOClient from "socket.io-client";
 
 const App = (props) => {
   const [products, setProducts] = useState([]);
@@ -31,6 +32,15 @@ const App = (props) => {
       // console.log(res.data);
     });
   }, []);
+
+  // useEffect(() => {
+  //   const socket = socketIOClient("localhost:7000/api/products/");
+  //   socket.on("FromAPI", (data) => {
+  //     console.log(data);
+  //     setProducts(data);
+  //     setTimeout(() => console.log("dddd"), 3000);
+  //   });
+  // }, []);
 
   const addCart = () => {
     return setCart(cart + 1);

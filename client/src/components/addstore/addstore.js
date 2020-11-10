@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./addstore.css";
 import axios from "axios";
+import socketIOClient from "socket.io-client";
 
 const Addstore = () => {
   let product = {};
@@ -13,6 +14,15 @@ const Addstore = () => {
       .post(process.env.REACT_APP_URL, product)
       .then((res) => console.log(res.data));
   };
+
+  // useEffect(() => {
+  //   const socket = socketIOClient(process.env.REACT_APP_URL);
+  //   socket.on("FromAPI", (data) => {
+  //     console.log(data);
+  //     setProducts(data);
+  //     // setTimeout(() => setTodo({}), 3000);
+  //   });
+  // }, []);
 
   return (
     <div className="addstore">

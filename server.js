@@ -5,6 +5,11 @@ const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
 
+const socketIo = require("socket.io");
+const http = require("http");
+const server = http.createServer(app);
+const io = socketIo(server);
+
 dotenv.config();
 app.use(cors());
 app.use(express.json());
@@ -16,6 +21,14 @@ const URL = process.env.URL;
 connectToDb().then(async () => {
   app.listen(PORT, () => {
     console.log("Server is running port ", PORT);
+  });
+});
+
+io.on("connection", (socket) => {
+  console.log("New client connected");
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+    // clearInterval(interval);
   });
 });
 
@@ -39,6 +52,8 @@ app.get(URL, async (req, res) => {
 });
 
 app.post(URL, async (req, res) => {
+  // const products = await models.products.find();
+
   const newproduct = new models.products({
     title: req.body.title,
     quantity: +req.body.quantity,
@@ -50,6 +65,8 @@ app.post(URL, async (req, res) => {
   try {
     await newproduct.save();
     res.send(newproduct);
+    io.emit("FromAPI", newproduct);
+    // console.log(products);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -63,6 +80,17 @@ app.delete(`${URL}:id`, async (req, res) => {
     console.log(req.params.id);
     if (!deleteproduct) res.status(404).send("No item found");
     res.status(200).send();
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.put(`${URL}:id`, async (req, res) => {
+  try {
+    const changeproduct = await models.products.findOneAndUpdate(req.params.id);
+    console.log(req.params.id);
+    // if (!deleteproduct) res.status(404).send("No item found");
+    // res.status(200).send();
   } catch (err) {
     res.status(500).send(err);
   }

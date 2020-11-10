@@ -12,7 +12,9 @@ const Change = (props) => {
   // const [open, setOpen] = useState("open");
 
   const removePro = () => {
-    axios.put("http://localhost:8000/api/:id").then((res) => console.log(res.data));
+    axios
+      .put(`${process.env.REACT_APP_URL}:id`)
+      .then((res) => console.log(res.data));
   };
 
   return (
@@ -30,7 +32,7 @@ const Change = (props) => {
         <button
           className="btn"
           onClick={() => {
-            if (password === "1234") {
+            if (password === process.env.REACT_APP_PASS) {
               document.getElementById("input2").value = "";
               document.getElementById("input2").placeholder = "נכנסת בהצלחה";
               setLoaded(true);
@@ -49,7 +51,7 @@ const Change = (props) => {
       {loaded && (
         <div className="opendiv">
           {props.products.map((product) => (
-            <Link to={"/" + product.id}>
+            <Link to={"/" + product._id}>
               <img className="imgdel" src={product.image} alt="" />
             </Link>
           ))}
