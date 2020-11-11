@@ -24,13 +24,13 @@ connectToDb().then(async () => {
   });
 });
 
-io.on("connection", (socket) => {
-  console.log("New client connected");
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-    // clearInterval(interval);
-  });
-});
+// io.on("connection", (socket) => {
+//   console.log("New client connected");
+//   socket.on("disconnect", () => {
+//     console.log("Client disconnected");
+//     // clearInterval(interval);
+//   });
+// });
 
 app.get(URL, async (req, res) => {
   const products = await models.products.find();
@@ -86,11 +86,31 @@ app.delete(`${URL}:id`, async (req, res) => {
 });
 
 app.put(`${URL}:id`, async (req, res) => {
+  const productId = req.params.id;
+  console.log(productId);
+
+  let updateValues = { $set: {} };
+
+  if (req.body.image) updateValues.$set["image"] = req.body.image;
+  if (req.body.title) updateValues.$set["title"] = req.body.title;
+  if (req.body.price) updateValues.$set["price"] = +req.body.price;
+  if (req.body.quantity) updateValues.$set["quantity"] = +req.body.quantity;
+
   try {
-    const changeproduct = await models.products.findOneAndUpdate(req.params.id);
-    console.log(req.params.id);
-    // if (!deleteproduct) res.status(404).send("No item found");
-    // res.status(200).send();
+    await models.products.findByIdAndUpdate(
+      productId,
+      updateValues
+      // {
+      //   image: req.body.image,
+      //   title: req.body.title,
+      //   quantity: +req.body.quantity,
+      //   price: +req.body.price,
+      //   item: 0,
+      // }
+
+      // { new: true }
+    );
+    res.status(200).send("change");
   } catch (err) {
     res.status(500).send(err);
   }
@@ -99,7 +119,6 @@ app.put(`${URL}:id`, async (req, res) => {
 // app.get("/api/search/", async (req, res) => {
 //   console.log("QUERY:", req.query.search);
 //   const  search  = req.query.search;
-
 //   const productsSearch = await models.products.find(
 //     { title: { $regex: search, $options: "i" } },
 //     function (err, docs) {

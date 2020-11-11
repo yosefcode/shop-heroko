@@ -8,12 +8,13 @@ const Change = (props) => {
 
   let password = "";
   const [loaded, setLoaded] = useState(false);
+  const [loaded1, setLoaded1] = useState(false);
   const [open, setOpen] = useState("open");
-  // const [open, setOpen] = useState("open");
+  const [productId, setProductId] = useState();
 
   const removePro = () => {
     axios
-      .put(`${process.env.REACT_APP_URL}:id`)
+      .put(process.env.REACT_APP_URL + productId, product)
       .then((res) => console.log(res.data));
   };
 
@@ -50,19 +51,63 @@ const Change = (props) => {
       </div>
       {loaded && (
         <div className="opendiv">
+          <div> בחר מוצר לשינוי </div>
           {props.products.map((product) => (
             <Link to={"/" + product._id}>
-              <img className="imgdel" src={product.image} alt="" />
+              <img
+                className="imgdel"
+                src={product.image}
+                alt=""
+                onClick={() => {
+                  setProductId(product._id);
+                  setLoaded1(true);
+                }}
+              />
             </Link>
           ))}
-          <input
+          {/* <input
             type="text"
             onChange={(e) => (product.title = e.target.value)}
             placeholder="title"
-          />{" "}
-          <button className="btn" onClick={removePro}>
-            delete
-          </button>
+          />{" "} */}
+          {loaded1 && (
+            <div className="aaa">
+              <input
+                type="text"
+                onChange={(e) => (product.image = e.target.value)}
+                placeholder="image"
+              />{" "}
+              <br />
+              <input
+                type="text"
+                onChange={(e) => (product.title = e.target.value)}
+                placeholder="title"
+              />{" "}
+              <br />
+              <input
+                type="text"
+                onChange={(e) => (product.quantity = +e.target.value)}
+                placeholder="quantity"
+              />{" "}
+              <br />
+              <input
+                type="text"
+                onChange={(e) => (product.price = +e.target.value)}
+                placeholder="price"
+              />{" "}
+              <br />
+              <button
+                className="btn"
+                onClick={() => {
+                  removePro(productId);
+
+                  console.log(product, productId);
+                }}
+              >
+                שנה מוצר
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
