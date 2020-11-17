@@ -38,6 +38,13 @@ const App = (props) => {
   useEffect(() => {
     getproducts();
 
+    socket.on("SearchProduct", (data) => {
+      axios.get(process.env.REACT_APP_URL).then((res) => {
+        setProducts(data);
+      });
+      // getproducts(data);
+    });
+
     socket.on("AddProduct", () => {
       getproducts();
     });

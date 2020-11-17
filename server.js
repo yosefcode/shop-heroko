@@ -70,6 +70,7 @@ app.get(URL, async (req, res) => {
         title: { $regex: search, $options: "i" },
       });
       res.send(productsSearch);
+      io.emit("SearchProduct", productsSearch);
     } else {
       res.status(200).send(products);
       console.log("get");

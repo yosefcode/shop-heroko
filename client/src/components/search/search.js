@@ -55,7 +55,7 @@ const Search = () => {
         </button>
       </div>
 
-      <div>
+      {/* <div>
         {loaded && (
           <div className="allsearch">
             <button
@@ -88,7 +88,7 @@ const Search = () => {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
