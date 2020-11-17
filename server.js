@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 7000;
 const URL = process.env.URL;
 
 connectToDb().then(async () => {
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log("Server is running port ", PORT);
   });
 });
@@ -30,6 +30,33 @@ connectToDb().then(async () => {
 //     console.log("Client disconnected");
 //     // clearInterval(interval);
 //   });
+// });
+
+let userCount = 0;
+
+io.on("connection", (socket) => {
+  userCount++;
+
+  const username = `Guest ${userCount}`;
+
+  socket.emit("SET_USERNAME", username);
+  io.sockets.emit("CREATE_MESSAGE", {
+    content: `${username} connected`,
+  });
+
+  socket.on("SEND_MESSAGE", (messageObject) => {
+    io.sockets.emit("CREATE_MESSAGE", messageObject);
+  });
+
+  socket.on("disconnected", () => {
+    io.sockets.emit("CREATE_MESSAGE", {
+      content: `${username} disconnected`,
+    });
+  });
+});
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 // });
 
 app.get(URL, async (req, res) => {
@@ -44,7 +71,8 @@ app.get(URL, async (req, res) => {
       });
       res.send(productsSearch);
     } else {
-      res.send(products);
+      res.status(200).send(products);
+      console.log("get");
     }
   } catch (err) {
     res.status(500).send(err);
@@ -52,8 +80,6 @@ app.get(URL, async (req, res) => {
 });
 
 app.post(URL, async (req, res) => {
-  // const products = await models.products.find();
-
   const newproduct = new models.products({
     title: req.body.title,
     quantity: +req.body.quantity,
@@ -79,7 +105,7 @@ app.delete(`${URL}:id`, async (req, res) => {
     );
     console.log(req.params.id);
     if (!deleteproduct) res.status(404).send("No item found");
-    res.status(200).send();
+    res.status(200).send(console.log("delete"));
   } catch (err) {
     res.status(500).send(err);
   }
@@ -110,7 +136,7 @@ app.put(`${URL}:id`, async (req, res) => {
 
       // { new: true }
     );
-    res.status(200).send("change");
+    res.status(200).send(console.log("change"));
   } catch (err) {
     res.status(500).send(err);
   }

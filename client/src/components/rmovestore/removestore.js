@@ -4,9 +4,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Removestore = (props) => {
-  let password = "";
-  const [loaded, setLoaded] = useState(false);
-  const [open, setOpen] = useState("open");
+  // let password = "";
+  // const [loaded, setLoaded] = useState(false);
+  // const [open, setOpen] = useState("open");
   const [productId, setProductId] = useState();
 
   const removeProduct = () => {
@@ -17,8 +17,8 @@ const Removestore = (props) => {
 
   return (
     <div className="removestore">
-      <div>הסר מוצר מהחנות</div>
-      <div>
+      <div>בחר מוצר להסרה</div>
+      {/* <div>
         <input
           id="input1"
           type="password"
@@ -46,23 +46,23 @@ const Removestore = (props) => {
           {open}
         </button>
       </div>
-      {loaded && (
-        <div className="opendiv">
-          {props.products.map((product) => (
-            <Link to={"/" + product._id}>
-              <img
-                className="imgdel"
-                src={product.image}
-                alt=""
-                onClick={() => setProductId(product._id)}
-              />
-            </Link>
-          ))}
-          <button className="btn" onClick={() => removeProduct(productId)}>
-            delete
-          </button>
-        </div>
-      )}
+      {loaded && ( */}
+      <div>
+        {props.products.map((product) => (
+          <Link key={product._id} to={"/" + product._id}>
+            <img
+              className="imgdel"
+              src={product.image}
+              alt=""
+              onClick={() => setProductId(product._id)}
+            />
+          </Link>
+        ))}
+        <button className="btn" onClick={() => removeProduct(productId)}>
+          מחק
+        </button>
+      </div>
+      {/* )} */}
     </div>
   );
 };
