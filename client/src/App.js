@@ -27,7 +27,7 @@ const App = (props) => {
   const [cartproduct, setCartproduct] = useState([]);
   const [cartmongo, setCartmongo] = useState([]);
 
-  const socket = socketIOClient("http://localhost:7000");
+  const socket = socketIOClient(process.env.REACT_APP_URLSOCKET);
 
   const getproducts = () => {
     axios.get(process.env.REACT_APP_URL).then((res) => {
