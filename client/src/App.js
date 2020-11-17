@@ -27,22 +27,29 @@ const App = (props) => {
   const [cartproduct, setCartproduct] = useState([]);
   const [cartmongo, setCartmongo] = useState([]);
 
-  useEffect(() => {
+  const socket = socketIOClient("http://localhost:7000");
+
+  const getproducts = () => {
     axios.get(process.env.REACT_APP_URL).then((res) => {
       setProducts(res.data);
-      // console.log(res.data);
-      const socket = socketIOClient("http://localhost:7000");
-      socket.on("FromAPI", (data) => {
-        console.log(data);
-        // setProducts(data);
-      });
+    });
+  };
+
+  useEffect(() => {
+    getproducts();
+
+    socket.on("AddProduct", () => {
+      getproducts();
+    });
+
+    socket.on("DeleteProduct", () => {
+      getproducts();
+    });
+
+    socket.on("ChangeProduct", () => {
+      getproducts();
     });
   }, []);
-
-  // useEffect(() => {
-  //     // setTimeout(() => console.log("dddd"), 3000);
-  //   });
-  // }, []);
 
   const addCart = () => {
     return setCart(cart + 1);

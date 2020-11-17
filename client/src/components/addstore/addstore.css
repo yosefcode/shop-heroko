@@ -8,7 +8,7 @@
   font-weight: 500;
   margin: 10px auto;
 }
-.addstore #input {
+.addstore .input {
   width: 38%;
   height: 25px;
   color: black;

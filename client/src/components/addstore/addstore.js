@@ -10,6 +10,10 @@ const Addstore = () => {
     axios
       .post(process.env.REACT_APP_URL, product)
       .then((res) => console.log(res.data));
+    document.getElementById("image").value = "";
+    document.getElementById("title").value = "";
+    document.getElementById("quantity").value = "";
+    document.getElementById("price").value = "";
   };
 
   // useEffect(() => {
@@ -26,25 +30,29 @@ const Addstore = () => {
       <div>הוסף מוצר לחנות</div>
       <div>
         <input
+          id="image"
           type="text"
           onChange={(e) => (product.image = e.target.value)}
           placeholder="image"
         />
         <input
+          id="title"
           type="text"
           onChange={(e) => (product.title = e.target.value)}
           placeholder="title"
         />{" "}
         <br />
         <input
-          id="input"
+          className="input"
+          id="quantity"
           type="text"
           onChange={(e) => (product.quantity = +e.target.value)}
           placeholder="quantity"
         />
         {"    "}
         <input
-          id="input"
+          className="input"
+          id="price"
           type="text"
           onChange={(e) => (product.price = +e.target.value)}
           placeholder="price"

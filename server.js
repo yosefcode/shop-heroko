@@ -91,8 +91,7 @@ app.post(URL, async (req, res) => {
   try {
     await newproduct.save();
     res.send(newproduct);
-    io.emit("FromAPI", newproduct);
-    // console.log(products);
+    io.emit("AddProduct");
   } catch (err) {
     res.status(500).send(err);
   }
@@ -103,9 +102,9 @@ app.delete(`${URL}:id`, async (req, res) => {
     const deleteproduct = await models.products.findByIdAndDelete(
       req.params.id
     );
-    console.log(req.params.id);
-    if (!deleteproduct) res.status(404).send("No item found");
     res.status(200).send(console.log("delete"));
+    io.emit("DeleteProduct");
+    if (!deleteproduct) res.status(404).send("No item found");
   } catch (err) {
     res.status(500).send(err);
   }
@@ -113,7 +112,6 @@ app.delete(`${URL}:id`, async (req, res) => {
 
 app.put(`${URL}:id`, async (req, res) => {
   const productId = req.params.id;
-  console.log(productId);
 
   let updateValues = { $set: {} };
 
@@ -137,6 +135,7 @@ app.put(`${URL}:id`, async (req, res) => {
       // { new: true }
     );
     res.status(200).send(console.log("change"));
+    io.emit("ChangeProduct");
   } catch (err) {
     res.status(500).send(err);
   }

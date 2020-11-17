@@ -15,7 +15,7 @@ const Search = () => {
       if (res.data.length === 0) {
         setLoaded(false);
         setValue("");
-        setPlaceholder("פריט לא קיים נסה שוב");
+        setPlaceholder("מצטערים... לא מצאנו את מה שחיפשת...");
       } else {
         setValue("");
         setPlaceholder("יש!!! מצאנו....");
