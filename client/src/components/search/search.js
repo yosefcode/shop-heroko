@@ -5,22 +5,22 @@ import { Icon, InlineIcon } from "@iconify/react";
 import magnifierIcon from "@iconify-icons/simple-line-icons/magnifier";
 
 const Search = () => {
-  const [loaded, setLoaded] = useState(false);
-  const [products, setProducts] = useState([]);
+  // const [loaded, setLoaded] = useState(false);
+  // const [products, setProducts] = useState([]);
   const [value, setValue] = useState("");
   const [placeholder, setPlaceholder] = useState("מה אתה מחפש?");
 
   const searchToServer = async () => {
     await axios.get(`/api/products/?search=${value}`).then((res) => {
       if (res.data.length === 0) {
-        setLoaded(false);
+        // setLoaded(false);
         setValue("");
         setPlaceholder("מצטערים... לא מצאנו את מה שחיפשת...");
       } else {
         setValue("");
         setPlaceholder("יש!!! מצאנו....");
-        setProducts(res.data);
-        setLoaded(true);
+        // setProducts(res.data);
+        // setLoaded(true);
       }
     });
   };
@@ -45,7 +45,7 @@ const Search = () => {
             if (value === "") {
               setValue("");
               setPlaceholder("אנא הכנס מוצר לחיפוש");
-              setLoaded(false);
+              // setLoaded(false);
             } else {
               searchToServer();
             }

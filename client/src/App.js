@@ -27,7 +27,7 @@ const App = (props) => {
   const [cartproduct, setCartproduct] = useState([]);
   const [cartmongo, setCartmongo] = useState([]);
 
-  const socket = socketIOClient();
+  const socket = socketIOClient("http://localhost:7000");
 
   const getproducts = () => {
     axios.get(process.env.REACT_APP_URL).then((res) => {
@@ -39,10 +39,13 @@ const App = (props) => {
     getproducts();
 
     socket.on("SearchProduct", (data) => {
-      axios.get(process.env.REACT_APP_URL).then((res) => {
-        setProducts(data);
-      });
-      // getproducts(data);
+      if (data.length > 0) {
+        axios.get(process.env.REACT_APP_URL).then((res) => {
+          setProducts(data);
+        });
+      } else {
+        getproducts();
+      }
     });
 
     socket.on("AddProduct", () => {
