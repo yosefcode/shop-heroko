@@ -3,7 +3,7 @@ import "./manage.css";
 import Addstore from "../addstore/addstore";
 import Removestore from "../rmovestore/removestore";
 import Change from "../change/change";
-import Chat from "../chat/chat";
+// import Chat from "../chat/chat";
 
 const Manage = (props) => {
   const [loaded, setLoaded] = useState(false);

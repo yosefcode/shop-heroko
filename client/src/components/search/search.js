@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./search.css";
 import axios from "axios";
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import magnifierIcon from "@iconify-icons/simple-line-icons/magnifier";
 
 const Search = () => {

@@ -4,18 +4,12 @@ import Header from "./components/header/header";
 import Product from "./components/product/pruduct";
 import Manage from "./components/manage/manage";
 import Search from "./components/search/search";
-import Chat from "./components/chat/chat";
+// import Chat from "./components/chat/chat";
 // import Chatseler from "./components/chat/chatseler";
 // import Chatclient from "./components/chat/chatclient";
 import axios from "axios";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  // useParams,
-} from "react-router-dom";
-import Description from "./components/description/description";
+import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
+// import Description from "./components/description/description";
 import Cart from "./components/cart/cart";
 // import Cartmongo from "./components/cart mongo/cart";
 import cartimg from "./components/cart/cart.jpg";
@@ -76,7 +70,12 @@ const App = (props) => {
       <Link className="link" to="/">
         <div className="App" dir="rtl">
           <div className="barright">
-            <Manage products={products} />
+            <Manage
+              // aaa={socket.on("AddProduct", () => {
+              //   products = { products };
+              // })}
+              products={products}
+            />
           </div>
 
           <div className="cart">
