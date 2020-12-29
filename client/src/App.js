@@ -4,6 +4,7 @@ import Header from "./components/header/header";
 import Product from "./components/product/pruduct";
 import Manage from "./components/manage/manage";
 import Search from "./components/search/search";
+import Kesher from "./components/kesher/kesher";
 // import Chat from "./components/chat/chat";
 // import Chatseler from "./components/chat/chatseler";
 // import Chatclient from "./components/chat/chatclient";
@@ -140,6 +141,7 @@ const App = (props) => {
                     />
                     ))}
                   </div> */}
+          <Kesher />
 
           <Header />
           <Search products={products} />

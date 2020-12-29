@@ -1,0 +1,16 @@
+.chatbb {
+  position: absolute;
+  border: 3px black solid;
+  width: 300px;
+  height: 400px;
+  margin: 20px auto;
+  right: 60%;
+  top: 5%;
+  border-radius: 20px;
+  padding: 20px;
+  background: rgb(235, 202, 202);
+}
+.input {
+  position: absolute;
+  top: 330px;
+}

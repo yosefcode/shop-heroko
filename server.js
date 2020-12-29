@@ -4,6 +4,10 @@ const { connectToDb, models } = require("./models");
 const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+
+var nodemailer = require("nodemailer");
+var smtpTransport = require("nodemailer-smtp-transport");
 
 const socketIo = require("socket.io");
 const http = require("http");
@@ -14,6 +18,7 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 7000;
 const URL = process.env.URL;
@@ -32,28 +37,28 @@ connectToDb().then(async () => {
 //   });
 // });
 
-let userCount = 0;
+// let userCount = 0;
 
-io.on("connection", (socket) => {
-  userCount++;
+// io.on("connection", (socket) => {
+//   userCount++;
 
-  const username = `Guest ${userCount}`;
+//   const username = `Guest ${userCount}`;
 
-  socket.emit("SET_USERNAME", username);
-  io.sockets.emit("CREATE_MESSAGE", {
-    content: `${username} connected`,
-  });
+//   socket.emit("SET_USERNAME", username);
+//   io.sockets.emit("CREATE_MESSAGE", {
+//     content: `${username} connected`,
+//   });
 
-  socket.on("SEND_MESSAGE", (messageObject) => {
-    io.sockets.emit("CREATE_MESSAGE", messageObject);
-  });
+//   socket.on("SEND_MESSAGE", (messageObject) => {
+//     io.sockets.emit("CREATE_MESSAGE", messageObject);
+//   });
 
-  socket.on("disconnected", () => {
-    io.sockets.emit("CREATE_MESSAGE", {
-      content: `${username} disconnected`,
-    });
-  });
-});
+//   socket.on("disconnected", () => {
+//     io.sockets.emit("CREATE_MESSAGE", {
+//       content: `${username} disconnected`,
+//     });
+//   });
+// });
 
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname + "/client/build/index.html"));
@@ -140,6 +145,43 @@ app.put(`${URL}:id`, async (req, res) => {
   } catch (err) {
     res.status(500).send(err);
   }
+});
+
+app.post("/send-mail", function (req, res) {
+  let transporter = nodemailer.createTransport(
+    smtpTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      secure: false,
+      port: 25,
+      auth: {
+        user: "yosef9987@gmail.com",
+        pass: "wadkceqtjeajwsbs",
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    })
+  );
+
+  var mailOptions = {
+    // from: req.body.email,
+    to: "yosef9987@gmail.com",
+    subject: "הודעה מהחנות",
+    text: `שם: ${req.body.name} \nמייל: ${req.body.email} \nהודעה: ${req.body.message}`,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+
+  // app.get("/send-mail", (req, res) => {
+  //   res.send("Hello World");
+  // });
 });
 
 // app.get("/api/search/", async (req, res) => {
