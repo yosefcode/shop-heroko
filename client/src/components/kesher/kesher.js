@@ -7,7 +7,7 @@ function Kesher() {
 
   const addProduct = () => {
     axios
-      .post("http://localhost:7000/send-mail/", infoKesher)
+      .post(`${process.env.REACT_APP_URL}/send-mail/`, infoKesher)
       .then((res) => console.log("res.data"));
 
     document.getElementById("name").value = "";
