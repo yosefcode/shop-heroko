@@ -147,7 +147,7 @@ app.put(`${URL}:id`, async (req, res) => {
   }
 });
 
-app.post("/send-mail", function (req, res) {
+app.post(`${URL}/send-mail`, function (req, res) {
   let transporter = nodemailer.createTransport(
     smtpTransport({
       service: "gmail",
