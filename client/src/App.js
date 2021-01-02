@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/header/header";
 import Product from "./components/product/pruduct";
-import Addstore from "./components/addstore/addstore";
-import Removestore from "./components/rmovestore/removestore";
-import Change from "./components/change/change";
+import Manage from "./components/manage/manage";
 import Search from "./components/search/search";
+import Chat from "./components/chat/chat";
+// import Chatseler from "./components/chat/chatseler";
+// import Chatclient from "./components/chat/chatclient";
 import axios from "axios";
 import {
   BrowserRouter as Router,
@@ -26,21 +27,29 @@ const App = (props) => {
   const [cartproduct, setCartproduct] = useState([]);
   const [cartmongo, setCartmongo] = useState([]);
 
-  useEffect(() => {
+  const socket = socketIOClient();
+
+  const getproducts = () => {
     axios.get(process.env.REACT_APP_URL).then((res) => {
       setProducts(res.data);
-      // console.log(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getproducts();
+
+    socket.on("AddProduct", () => {
+      getproducts();
+    });
+
+    socket.on("DeleteProduct", () => {
+      getproducts();
+    });
+
+    socket.on("ChangeProduct", () => {
+      getproducts();
     });
   }, []);
-
-  // useEffect(() => {
-  //   const socket = socketIOClient("localhost:7000/api/products/");
-  //   socket.on("FromAPI", (data) => {
-  //     console.log(data);
-  //     setProducts(data);
-  //     setTimeout(() => console.log("dddd"), 3000);
-  //   });
-  // }, []);
 
   const addCart = () => {
     return setCart(cart + 1);
@@ -57,10 +66,7 @@ const App = (props) => {
       <Link className="link" to="/">
         <div className="App" dir="rtl">
           <div className="barright">
-            <Search products={products} />
-            <Addstore />
-            <Removestore products={products} />
-            <Change products={products} />
+            <Manage products={products} />
           </div>
 
           <div className="cart">
@@ -92,19 +98,20 @@ const App = (props) => {
                 }
               />
             ))}
+            <div>{/* <Chat /> */}</div>
           </div>
           {/* <div className="cartmongo">
             <div className="numcartall">
-              <img className="imgcart" src={cartimg} alt="sory" />
-              <div className="numcart">{cart}</div>
+            <img className="imgcart" src={cartimg} alt="sory" />
+            <div className="numcart">{cart}</div>
             </div>
             <br />
-
+            
             {cartmongo.map((productcart) => (
               <Cartmongo
-                key={productcart.id}
-                id={productcart.id}
-                quantity={productcart.quantity}
+              key={productcart.id}
+              id={productcart.id}
+              quantity={productcart.quantity}
                 title={productcart.title}
                 image={productcart.image}
                 price={productcart.price}
@@ -118,14 +125,15 @@ const App = (props) => {
                   setCartproduct(
                     cartproduct.filter(
                       (listpro) => productcart.key !== listpro.key
-                    )
-                  )
-                }
-              />
-            ))}
-          </div> */}
+                      )
+                      )
+                    }
+                    />
+                    ))}
+                  </div> */}
 
           <Header />
+          <Search products={products} />
           <div className="productall">
             {products.map((product) => (
               <Product

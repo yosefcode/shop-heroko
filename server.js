@@ -4,6 +4,10 @@ const { connectToDb, models } = require("./models");
 const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+
+var nodemailer = require("nodemailer");
+var smtpTransport = require("nodemailer-smtp-transport");
 
 const socketIo = require("socket.io");
 const http = require("http");
@@ -14,12 +18,13 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 7000;
 const URL = process.env.URL;
 
 connectToDb().then(async () => {
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log("Server is running port ", PORT);
   });
 });
@@ -30,6 +35,33 @@ connectToDb().then(async () => {
 //     console.log("Client disconnected");
 //     // clearInterval(interval);
 //   });
+// });
+
+// let userCount = 0;
+
+// io.on("connection", (socket) => {
+//   userCount++;
+
+//   const username = `Guest ${userCount}`;
+
+//   socket.emit("SET_USERNAME", username);
+//   io.sockets.emit("CREATE_MESSAGE", {
+//     content: `${username} connected`,
+//   });
+
+//   socket.on("SEND_MESSAGE", (messageObject) => {
+//     io.sockets.emit("CREATE_MESSAGE", messageObject);
+//   });
+
+//   socket.on("disconnected", () => {
+//     io.sockets.emit("CREATE_MESSAGE", {
+//       content: `${username} disconnected`,
+//     });
+//   });
+// });
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 // });
 
 app.get(URL, async (req, res) => {
@@ -43,8 +75,10 @@ app.get(URL, async (req, res) => {
         title: { $regex: search, $options: "i" },
       });
       res.send(productsSearch);
+      io.emit("SearchProduct", productsSearch);
     } else {
-      res.send(products);
+      res.status(200).send(products);
+      console.log("get");
     }
   } catch (err) {
     res.status(500).send(err);
@@ -52,8 +86,6 @@ app.get(URL, async (req, res) => {
 });
 
 app.post(URL, async (req, res) => {
-  // const products = await models.products.find();
-
   const newproduct = new models.products({
     title: req.body.title,
     quantity: +req.body.quantity,
@@ -65,8 +97,7 @@ app.post(URL, async (req, res) => {
   try {
     await newproduct.save();
     res.send(newproduct);
-    io.emit("FromAPI", newproduct);
-    // console.log(products);
+    io.emit("AddProduct");
   } catch (err) {
     res.status(500).send(err);
   }
@@ -77,9 +108,9 @@ app.delete(`${URL}:id`, async (req, res) => {
     const deleteproduct = await models.products.findByIdAndDelete(
       req.params.id
     );
-    console.log(req.params.id);
+    res.status(200).send(console.log("delete"));
+    io.emit("DeleteProduct");
     if (!deleteproduct) res.status(404).send("No item found");
-    res.status(200).send();
   } catch (err) {
     res.status(500).send(err);
   }
@@ -87,7 +118,6 @@ app.delete(`${URL}:id`, async (req, res) => {
 
 app.put(`${URL}:id`, async (req, res) => {
   const productId = req.params.id;
-  console.log(productId);
 
   let updateValues = { $set: {} };
 
@@ -110,10 +140,47 @@ app.put(`${URL}:id`, async (req, res) => {
 
       // { new: true }
     );
-    res.status(200).send("change");
+    res.status(200).send(console.log("change"));
+    io.emit("ChangeProduct");
   } catch (err) {
     res.status(500).send(err);
   }
+});
+
+let transporter = nodemailer.createTransport(
+  smtpTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    secure: false,
+    port: 25,
+    auth: {
+      user: process.env.GOOGLE_MAIL,
+      pass: process.env.GOOGLE_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  })
+);
+
+app.post(`${URL}send-mail/`, function (req, res) {
+  var mailOptions = {
+    to: process.env.GOOGLE_MAIL,
+    subject: "הודעה מהחנות",
+    text: `שם: ${req.body.name} \nמייל: ${req.body.email} \nהודעה: ${req.body.message}`,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+
+  // app.get("/send-mail", (req, res) => {
+  //   res.send("Hello World");
+  // });
 });
 
 // app.get("/api/search/", async (req, res) => {
