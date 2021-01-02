@@ -3,11 +3,8 @@ import "./manage.css";
 import Addstore from "../addstore/addstore";
 import Removestore from "../rmovestore/removestore";
 import Change from "../change/change";
-<<<<<<< HEAD
 import Chat from "../chat/chat";
-=======
 // import Chat from "../chat/chat";
->>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
 
 const Manage = (props) => {
   const [loaded, setLoaded] = useState(false);

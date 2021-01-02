@@ -70,11 +70,7 @@ const Removestore = (props) => {
       </div>
       {loaded && ( */}
       <div>
-<<<<<<< HEAD
-        {props.products.map((product) => (
-=======
         {products.map((product) => (
->>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
           <Link key={product._id} to={"/" + product._id}>
             <img
               className="imgdel"
