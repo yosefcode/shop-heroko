@@ -8,6 +8,11 @@
 }
 
 .search input {
+<<<<<<< HEAD
+=======
+  outline: none;
+
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
   width: 85%;
   height: 30px;
   color: black;
@@ -17,6 +22,10 @@
 .search .btn {
   width: 15%;
   height: 30px;
+<<<<<<< HEAD
+=======
+  outline: none;
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
   border: none;
   border-radius: 10px 0px 0px 10px;
   background-color: rgb(0, 0, 0);

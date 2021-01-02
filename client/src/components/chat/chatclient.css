@@ -1,0 +1,41 @@
+.chataa {
+  position: absolute;
+  border: 3px black solid;
+  width: 300px;
+  height: 400px;
+  margin: 20px auto;
+  right: 30%;
+  top: 5%;
+  border-radius: 20px;
+  padding: 20px;
+  background: rgb(203, 241, 203);
+}
+input[type="text"] {
+  /* margin-top: 250px; */
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px 0 0 15px;
+  width: 70%;
+  padding: 0 10px;
+}
+
+.btn {
+  display: inline-block;
+  width: 25%;
+  background: #4776b4;
+  border: 1px solid rgb(255, 255, 255);
+  color: #fff;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  font-size: 16px;
+  height: 50px;
+}
+.cln2 {
+  position: absolute;
+  top: 5%;
+
+  right: 10%;
+}

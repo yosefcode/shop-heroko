@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./removestore.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import socketIOClient from "socket.io-client";
 
 const Removestore = (props) => {
   // let password = "";
   // const [loaded, setLoaded] = useState(false);
   // const [open, setOpen] = useState("open");
   const [productId, setProductId] = useState();
+  const [products, setProducts] = useState([]);
+
+  const socket = socketIOClient(process.env.REACT_APP_URLSOCKET);
+
+  const getproducts = () => {
+    axios.get(process.env.REACT_APP_URL).then((res) => {
+      setProducts(res.data);
+    });
+  };
 
   const removeProduct = () => {
     axios
       .delete(process.env.REACT_APP_URL + productId)
       .then((res) => console.log(res));
   };
+
+  useEffect(() => {
+    getproducts();
+
+    socket.on("AddProduct", () => {
+      getproducts();
+    });
+
+    socket.on("DeleteProduct", () => {
+      getproducts();
+    });
+  }, []);
 
   return (
     <div className="removestore">
@@ -48,7 +70,11 @@ const Removestore = (props) => {
       </div>
       {loaded && ( */}
       <div>
+<<<<<<< HEAD
         {props.products.map((product) => (
+=======
+        {products.map((product) => (
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
           <Link key={product._id} to={"/" + product._id}>
             <img
               className="imgdel"

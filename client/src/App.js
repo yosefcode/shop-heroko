@@ -4,18 +4,17 @@ import Header from "./components/header/header";
 import Product from "./components/product/pruduct";
 import Manage from "./components/manage/manage";
 import Search from "./components/search/search";
+<<<<<<< HEAD
 import Chat from "./components/chat/chat";
+=======
+import Kesher from "./components/kesher/kesher";
+// import Chat from "./components/chat/chat";
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
 // import Chatseler from "./components/chat/chatseler";
 // import Chatclient from "./components/chat/chatclient";
 import axios from "axios";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  // useParams,
-} from "react-router-dom";
-import Description from "./components/description/description";
+import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
+// import Description from "./components/description/description";
 import Cart from "./components/cart/cart";
 // import Cartmongo from "./components/cart mongo/cart";
 import cartimg from "./components/cart/cart.jpg";
@@ -27,17 +26,38 @@ const App = (props) => {
   const [cartproduct, setCartproduct] = useState([]);
   const [cartmongo, setCartmongo] = useState([]);
 
+<<<<<<< HEAD
   const socket = socketIOClient();
+=======
+  const socket = socketIOClient(process.env.REACT_APP_URLSOCKET);
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
 
   const getproducts = () => {
     axios.get(process.env.REACT_APP_URL).then((res) => {
       setProducts(res.data);
     });
   };
+<<<<<<< HEAD
 
   useEffect(() => {
     getproducts();
 
+=======
+
+  useEffect(() => {
+    getproducts();
+
+    socket.on("SearchProduct", (data) => {
+      if (data.length > 0) {
+        axios.get(process.env.REACT_APP_URL).then((res) => {
+          setProducts(data);
+        });
+      } else {
+        getproducts();
+      }
+    });
+
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
     socket.on("AddProduct", () => {
       getproducts();
     });
@@ -66,7 +86,16 @@ const App = (props) => {
       <Link className="link" to="/">
         <div className="App" dir="rtl">
           <div className="barright">
+<<<<<<< HEAD
             <Manage products={products} />
+=======
+            <Manage
+              // aaa={socket.on("AddProduct", () => {
+              //   products = { products };
+              // })}
+              products={products}
+            />
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
           </div>
 
           <div className="cart">
@@ -131,6 +160,10 @@ const App = (props) => {
                     />
                     ))}
                   </div> */}
+<<<<<<< HEAD
+=======
+          <Kesher />
+>>>>>>> 974d734e5f52300e91b48ff68d55dbb157cf303e
 
           <Header />
           <Search products={products} />
