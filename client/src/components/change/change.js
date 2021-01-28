@@ -85,6 +85,7 @@ const Change = (props) => {
               className="btn"
               onClick={() => {
                 removePro(productId);
+                alert(`המוצר שונה בהצלחה`);
 
                 console.log(product, productId);
               }}

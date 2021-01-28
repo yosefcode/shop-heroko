@@ -80,7 +80,13 @@ const Removestore = (props) => {
             />
           </Link>
         ))}
-        <button className="btn" onClick={() => removeProduct(productId)}>
+        <button
+          className="btn"
+          onClick={() => {
+            removeProduct(productId);
+            alert(`המוצר הוסר בהצלחה`);
+          }}
+        >
           מחק
         </button>
       </div>

@@ -48,6 +48,7 @@ function Kesher() {
           type="reset"
           onClick={() => {
             addProduct();
+            alert(`שלום ${infoKesher.name} הודעתך נשלחה בהצלחה`);
           }}
         >
           שלח

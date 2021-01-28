@@ -57,7 +57,13 @@ const Addstore = () => {
           placeholder="price"
         />{" "}
         <br />
-        <button className="btn" onClick={addProduct}>
+        <button
+          className="btn"
+          onClick={() => {
+            addProduct();
+            alert(`המוצר "${product.title}" התווסף בהצלחה`);
+          }}
+        >
           Add
         </button>
       </div>
