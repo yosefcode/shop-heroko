@@ -6,6 +6,9 @@ const path = require("path");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 
+const imgerr =
+  "https://chefconditor.co.il/wp-content/uploads/2017/08/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA-%D7%9E%D7%95%D7%A6%D7%A8-%D7%97%D7%A1%D7%A8%D7%94-3.jpg";
+
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport");
 
@@ -87,11 +90,11 @@ app.get(URL, async (req, res) => {
 
 app.post(URL, async (req, res) => {
   const newproduct = new models.products({
-    title: req.body.title,
-    quantity: +req.body.quantity,
-    image: req.body.image,
-    price: +req.body.price,
-    item: 0,
+    title: req.body.title || "הכנס שם מוצר",
+    quantity: +req.body.quantity || 0,
+    image: req.body.image || imgerr,
+    price: +req.body.price || 0,
+    items: 0,
   });
   console.log("add");
   try {
