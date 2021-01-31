@@ -1,35 +1,52 @@
 .removestore {
-  width: 205px;
+  width: 350px;
   height: auto;
   border: 3px rgb(146, 82, 82) solid;
   background-color: rgb(255, 253, 224);
   border-radius: 20px;
   line-height: 35px;
-  font-weight: 500;
-  margin: 10px auto;
+  font-weight: 700;
+  /* top: 50px; */
+  position: absolute;
+  right: 475px;
+  font-size: 20px;
 }
 .removestore .btn {
-  width: 25%;
-  height: 25px;
+  width: 60%;
+  height: 45px;
+  margin: 10px auto 20px;
   border: none;
   border-radius: 10px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(95, 95, 95);
   transition-duration: 0.4s;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 700;
   color: rgb(255, 255, 255);
   line-height: normal;
-  margin: 10px 20px;
 }
-.removestore .imgdel {
-  margin: 3px;
-  height: 42px;
-  width: 42px;
+.removestore .btnimg {
+  margin: 15px;
+  height: 70px;
+  width: 70px;
   display: inline-block;
   border-radius: 8px;
+  border: 2px solid black;
+  position: relative;
 }
-.removestore .imgdel:hover {
+.removestore .imgdel {
+  margin: -34px;
+  height: 68px;
+  width: 68px;
+  border-radius: 8px;
+  position: absolute;
+}
+.removestore .btnimg:hover {
   transform: scale(1.4);
-  border: 1px black groove;
+  border: 2px rgb(61, 158, 16) solid;
+}
+
+.removestore .btnimg:focus {
+  transform: scale(1.4);
+  border: 2px rgb(255, 0, 0) solid;
 }

@@ -5,11 +5,12 @@ import Product from "./components/product/pruduct";
 import Manage from "./components/manage/manage";
 import Search from "./components/search/search";
 import Kesher from "./components/kesher/kesher";
+import Crud from "./components/crud/crud";
 // import Chat from "./components/chat/chat";
 // import Chatseler from "./components/chat/chatseler";
 // import Chatclient from "./components/chat/chatclient";
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 // import Description from "./components/description/description";
 import Cart from "./components/cart/cart";
 // import Cartmongo from "./components/cart mongo/cart";
@@ -68,49 +69,51 @@ const App = (props) => {
 
   return (
     <Router>
-      <Link className="link" to="/">
-        <div className="App" dir="rtl">
-          <div className="barright">
-            <Manage
-              // aaa={socket.on("AddProduct", () => {
-              //   products = { products };
-              // })}
-              products={products}
-            />
-          </div>
+      <Switch>
+        <Route path="/Manage/">
+          <Crud />
+        </Route>
 
-          <div className="cart">
-            <div className="numcartall">
-              <img className="imgcart" src={cartimg} alt="sory" />
-              <div className="numcart">{cart}</div>
-            </div>
-            <br />
+        <Route exact path="/">
+          <Link className="link" to="/">
+            <div className="App" dir="rtl">
+              <div className="barright">
+                <Manage products={products} />
+                <Kesher />
+              </div>
 
-            {cartproduct.map((productcart) => (
-              <Cart
-                key={productcart.id}
-                id={productcart.id}
-                quantity={productcart.quantity}
-                title={productcart.title}
-                image={productcart.image}
-                price={productcart.price}
-                itemscart={productcart.itemscart}
-                addCart={addCart}
-                removeCart={removeCart}
-                plusCart={() => productcart.itemscart++}
-                minusCart={() => productcart.itemscart--}
-                onRemove={() =>
-                  setCartproduct(
-                    cartproduct.filter(
-                      (listpro) => productcart.key !== listpro.key
-                    )
-                  )
-                }
-              />
-            ))}
-            <div>{/* <Chat /> */}</div>
-          </div>
-          {/* <div className="cartmongo">
+              <div className="cart">
+                <div className="numcartall">
+                  <img className="imgcart" src={cartimg} alt="sory" />
+                  <div className="numcart">{cart}</div>
+                </div>
+                <br />
+
+                {cartproduct.map((productcart) => (
+                  <Cart
+                    key={productcart.id}
+                    id={productcart.id}
+                    quantity={productcart.quantity}
+                    title={productcart.title}
+                    image={productcart.image}
+                    price={productcart.price}
+                    itemscart={productcart.itemscart}
+                    addCart={addCart}
+                    removeCart={removeCart}
+                    plusCart={() => productcart.itemscart++}
+                    minusCart={() => productcart.itemscart--}
+                    onRemove={() =>
+                      setCartproduct(
+                        cartproduct.filter(
+                          (listpro) => productcart.key !== listpro.key
+                        )
+                      )
+                    }
+                  />
+                ))}
+                <div>{/* <Chat /> */}</div>
+              </div>
+              {/* <div className="cartmongo">
             <div className="numcartall">
             <img className="imgcart" src={cartimg} alt="sory" />
             <div className="numcart">{cart}</div>
@@ -141,90 +144,90 @@ const App = (props) => {
                     />
                     ))}
                   </div> */}
-          <Kesher />
 
-          <Header />
-          <Search products={products} />
-          <div className="productall">
-            {products.map((product) => (
-              <Product
-                key={product._id}
-                id={product._id}
-                quantity={product.quantity}
-                title={product.title}
-                image={product.image}
-                items={product.items}
-                price={product.price}
-                pluspro={() => {
-                  product.items++;
-                }}
-                minuspro={() => {
-                  product.items--;
-                }}
-                addCart={addCart}
-                removeCart={removeCart}
-                reset={reset}
-                addcartproduct={() => {
-                  const listcart = cartproduct.find(
-                    (prod) => prod.id === product._id
-                  );
-                  if (!listcart) {
-                    setCartproduct([
-                      ...cartproduct,
-                      {
-                        key: product._id,
-                        id: product._id,
-                        title: product.title,
-                        image: product.image,
-                        price: product.price,
-                        items: product.items,
-                        itemscart: 1,
-                      },
-                    ]);
-                  } else {
-                    listcart.itemscart++;
-                    listcart.price += product.price;
-                  }
-                }}
-                addcartmongo={() => {
-                  // const listcartmongo = cartproduct.find(
-                  //   (prod) => prod.id === product._id
-                  // );
-                  // if (product.items === 0) {
-                  setCartmongo([
-                    ...cartmongo,
-                    {
-                      key: product._id,
-                      id: product._id,
-                      title: product.title,
-                      image: product.image,
-                      price: product.price,
-                      items: product.items,
-                      itemscart: 1,
-                    },
-                  ]);
-                  // } else {
-                  //   listcartmongo.itemscart++;
-                  //   listcartmongo.price += product.price;
-                  // }
-                }}
-                removecartproduct={() => {
-                  const listcart = cartproduct.find(
-                    (prod) => prod.id === product._id
-                  );
-                  listcart.itemscart--;
-                  listcart.price -= product.price;
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </Link>
+              <Header />
+              <Search products={products} />
+              <div className="productall">
+                {products.map((product) => (
+                  <Product
+                    key={product._id}
+                    id={product._id}
+                    quantity={product.quantity}
+                    title={product.title}
+                    image={product.image}
+                    items={product.items}
+                    price={product.price}
+                    pluspro={() => {
+                      product.items++;
+                    }}
+                    minuspro={() => {
+                      product.items--;
+                    }}
+                    addCart={addCart}
+                    removeCart={removeCart}
+                    reset={reset}
+                    addcartproduct={() => {
+                      const listcart = cartproduct.find(
+                        (prod) => prod.id === product._id
+                      );
+                      if (!listcart) {
+                        setCartproduct([
+                          ...cartproduct,
+                          {
+                            key: product._id,
+                            id: product._id,
+                            title: product.title,
+                            image: product.image,
+                            price: product.price,
+                            items: product.items,
+                            itemscart: 1,
+                          },
+                        ]);
+                      } else {
+                        listcart.itemscart++;
+                        listcart.price += product.price;
+                      }
+                    }}
+                    addcartmongo={() => {
+                      // const listcartmongo = cartproduct.find(
+                      //   (prod) => prod.id === product._id
+                      // );
+                      // if (product.items === 0) {
+                      setCartmongo([
+                        ...cartmongo,
+                        {
+                          key: product._id,
+                          id: product._id,
+                          title: product.title,
+                          image: product.image,
+                          price: product.price,
+                          items: product.items,
+                          itemscart: 1,
+                        },
+                      ]);
+                      // } else {
+                      //   listcartmongo.itemscart++;
+                      //   listcartmongo.price += product.price;
+                      // }
+                    }}
+                    removecartproduct={() => {
+                      const listcart = cartproduct.find(
+                        (prod) => prod.id === product._id
+                      );
+                      listcart.itemscart--;
+                      listcart.price -= product.price;
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </Link>
+        </Route>
 
-      {/* <Route exact path="/:id">
+        {/* <Route exact path="/:id">
         <Description />
       </Route> */}
-      <Switch></Switch>
+      </Switch>
     </Router>
   );
 };

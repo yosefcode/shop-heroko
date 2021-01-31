@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import "./manage.css";
-import Addstore from "../addstore/addstore";
-import Removestore from "../rmovestore/removestore";
-import Change from "../change/change";
-import Chat from "../chat/chat";
-// import Chat from "../chat/chat";
 
-const Manage = (props) => {
-  const [loaded, setLoaded] = useState(false);
+const Manage = () => {
   const [value, setValue] = useState("");
   const [placeholder, setPlaceholder] = useState("הכנס סיסמא");
-  const [open, setOpen] = useState("open");
-  const [products, setProducts] = useState([]);
+
+  const openLink = () => {
+    window.open("/Manage");
+  };
 
   return (
     <div className="manage">
@@ -27,31 +23,18 @@ const Manage = (props) => {
           className="btn"
           onClick={() => {
             if (value === process.env.REACT_APP_PASS) {
-              setProducts(props.products);
-              setLoaded(true);
-              setOpen("close");
               setValue("");
               setPlaceholder("נכנסת בהצלחה");
+              openLink();
             } else {
               setValue("");
               setPlaceholder("נסה שוב");
-              setLoaded(false);
-              setOpen("open");
             }
           }}
         >
-          {open}
+          כניסה{" "}
         </button>
       </div>
-      {loaded && (
-        <div>
-          {/* <br /> */}
-          <Addstore />
-          <Removestore products={products} />
-          <Change products={products} />
-          {/* <Chat /> */}
-        </div>
-      )}
     </div>
   );
 };

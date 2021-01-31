@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./removestore.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 
 const Removestore = (props) => {
@@ -71,23 +70,24 @@ const Removestore = (props) => {
       {loaded && ( */}
       <div>
         {products.map((product) => (
-          <Link key={product._id} to={"/" + product._id}>
+          <button className="btnimg">
             <img
               className="imgdel"
               src={product.image}
               alt=""
               onClick={() => setProductId(product._id)}
             />
-          </Link>
+          </button>
         ))}
+        <br />
         <button
           className="btn"
           onClick={() => {
-            removeProduct(productId);
+            removeProduct();
             alert(`המוצר הוסר בהצלחה`);
           }}
         >
-          מחק
+          מחק מוצר
         </button>
       </div>
       {/* )} */}

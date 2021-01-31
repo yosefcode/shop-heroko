@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./change.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 
 const Change = (props) => {
@@ -19,7 +18,7 @@ const Change = (props) => {
     });
   };
 
-  const removePro = () => {
+  const changePro = () => {
     axios
       .put(process.env.REACT_APP_URL + productId, product)
       .then((res) => console.log(res.data));
@@ -42,7 +41,7 @@ const Change = (props) => {
       <div> בחר מוצר לשינוי </div>
       <div>
         {products.map((product) => (
-          <Link key={product._id} to={"/" + product._id}>
+          <button className="btnimg">
             <img
               className="imgchange"
               src={product.image}
@@ -52,10 +51,10 @@ const Change = (props) => {
                 setLoaded1(true);
               }}
             />
-          </Link>
+          </button>
         ))}
         {loaded1 && (
-          <div className="aaa">
+          <div>
             <input
               type="text"
               onChange={(e) => (product.image = e.target.value)}
@@ -84,7 +83,7 @@ const Change = (props) => {
             <button
               className="btn"
               onClick={() => {
-                removePro(productId);
+                changePro();
                 alert(`המוצר שונה בהצלחה`);
 
                 console.log(product, productId);
