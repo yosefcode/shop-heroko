@@ -29,17 +29,17 @@ app.use(
   express.static(path.join(__dirname, "./client/build//static/"))
 );
 
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build"));
-// });
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build"));
+});
 
 // router.get("/", function (req, res, next) {
 //   res.status(200).send("Hi, It works!");
 // });
 
-app.get("*", function (req, res) {
-  res.sendFile("index.html", { root: path.join(__dirname, "./client/build/") });
-});
+// app.get("*", function (req, res) {
+//   res.sendFile("index.html", { root: path.join(__dirname, "./client/build/") });
+// });
 
 const PORT = process.env.PORT || 7000;
 const URL = process.env.URL;
