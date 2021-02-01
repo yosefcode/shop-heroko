@@ -9,15 +9,15 @@ import { Link } from "react-router-dom";
 const Crud = () => {
   return (
     <div>
-      <Link to={"/Manage/"}>
-        <div className="crud" dir="rtl">
-          <div>
-            <Addstore />
-            <Removestore />
-            <Change />
-          </div>
+      {/* <Link to={"/manage/"}> */}
+      <div className="crud" dir="rtl">
+        <div>
+          <Addstore />
+          <Removestore />
+          <Change />
         </div>
-      </Link>
+      </div>
+      {/* </Link> */}
     </div>
   );
 };
