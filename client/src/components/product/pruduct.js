@@ -25,9 +25,9 @@ const Product = (props) => {
       <h3>{props.title}</h3>
       <br />
 
-      <Link to={"/" + props.id}>
-        <img src={props.image} alt="תמונה חסרה" />
-      </Link>
+      {/* <Link to={"/" + props.id}> */}
+      <img src={props.image} alt="תמונה חסרה" />
+      {/* </Link> */}
       <br />
       <br />
       <h6>כמות מוצרים : {quantity}</h6>

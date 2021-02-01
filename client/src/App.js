@@ -70,7 +70,7 @@ const App = (props) => {
   return (
     <Router>
       <Switch>
-        <Route path="/api/Manage/">
+        <Route path="/Manage/">
           <Crud />
         </Route>
 

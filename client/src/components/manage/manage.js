@@ -6,7 +6,8 @@ const Manage = () => {
   const [placeholder, setPlaceholder] = useState("הכנס סיסמא");
 
   const openLink = () => {
-    window.open("/api/Manage");
+    window.open("/Manage/");
+    // window.open("/api/Manage");
   };
 
   return (
@@ -19,6 +20,7 @@ const Manage = () => {
           placeholder={placeholder}
           onChange={(e) => setValue(e.target.value)}
         ></input>
+
         <button
           className="btn"
           onClick={() => {
