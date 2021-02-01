@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/build"));
+  res.sendFile(path.resolve(__dirname, "./client/build/index.html"));
 });
 
 const PORT = process.env.PORT || 7000;
