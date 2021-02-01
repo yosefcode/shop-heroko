@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./manage.css";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const Manage = () => {
   const [value, setValue] = useState("");
@@ -13,6 +14,7 @@ const Manage = () => {
   return (
     <div className="manage">
       <div>כניסת מנהל</div>
+      <Link to="/manage">Create account</Link>
       <div>
         <input
           type="password"
