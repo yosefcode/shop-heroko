@@ -68,48 +68,52 @@ const App = (props) => {
   };
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          {/* <Link className="link" to="/"> */}
-          <div className="App" dir="rtl">
-            <div className="barright">
-              <Manage products={products} />
-              <Kesher />
-            </div>
+    <div>
+      <Router>
+        <Switch>
+          <Route path="/manage/">
+            <Crud />
+          </Route>
 
-            <div className="cart">
-              <div className="numcartall">
-                <img className="imgcart" src={cartimg} alt="sory" />
-                <div className="numcart">{cart}</div>
+          <Route exact path="/">
+            <div className="App" dir="rtl">
+              <div className="barright">
+                <Manage products={products} />
+                <Kesher />
               </div>
-              <br />
 
-              {cartproduct.map((productcart) => (
-                <Cart
-                  key={productcart.id}
-                  id={productcart.id}
-                  quantity={productcart.quantity}
-                  title={productcart.title}
-                  image={productcart.image}
-                  price={productcart.price}
-                  itemscart={productcart.itemscart}
-                  addCart={addCart}
-                  removeCart={removeCart}
-                  plusCart={() => productcart.itemscart++}
-                  minusCart={() => productcart.itemscart--}
-                  onRemove={() =>
-                    setCartproduct(
-                      cartproduct.filter(
-                        (listpro) => productcart.key !== listpro.key
+              <div className="cart">
+                <div className="numcartall">
+                  <img className="imgcart" src={cartimg} alt="sory" />
+                  <div className="numcart">{cart}</div>
+                </div>
+                <br />
+
+                {cartproduct.map((productcart) => (
+                  <Cart
+                    key={productcart.id}
+                    id={productcart.id}
+                    quantity={productcart.quantity}
+                    title={productcart.title}
+                    image={productcart.image}
+                    price={productcart.price}
+                    itemscart={productcart.itemscart}
+                    addCart={addCart}
+                    removeCart={removeCart}
+                    plusCart={() => productcart.itemscart++}
+                    minusCart={() => productcart.itemscart--}
+                    onRemove={() =>
+                      setCartproduct(
+                        cartproduct.filter(
+                          (listpro) => productcart.key !== listpro.key
+                        )
                       )
-                    )
-                  }
-                />
-              ))}
-              <div>{/* <Chat /> */}</div>
-            </div>
-            {/* <div className="cartmongo">
+                    }
+                  />
+                ))}
+                <div>{/* <Chat /> */}</div>
+              </div>
+              {/* <div className="cartmongo">
             <div className="numcartall">
             <img className="imgcart" src={cartimg} alt="sory" />
             <div className="numcart">{cart}</div>
@@ -141,34 +145,56 @@ const App = (props) => {
                     ))}
                   </div> */}
 
-            <Header />
-            <Search products={products} />
-            <div className="productall">
-              {products.map((product) => (
-                <Product
-                  key={product._id}
-                  id={product._id}
-                  quantity={product.quantity}
-                  title={product.title}
-                  image={product.image}
-                  items={product.items}
-                  price={product.price}
-                  pluspro={() => {
-                    product.items++;
-                  }}
-                  minuspro={() => {
-                    product.items--;
-                  }}
-                  addCart={addCart}
-                  removeCart={removeCart}
-                  reset={reset}
-                  addcartproduct={() => {
-                    const listcart = cartproduct.find(
-                      (prod) => prod.id === product._id
-                    );
-                    if (!listcart) {
-                      setCartproduct([
-                        ...cartproduct,
+              <Header />
+              <Search products={products} />
+              <div className="productall">
+                {products.map((product) => (
+                  <Product
+                    key={product._id}
+                    id={product._id}
+                    quantity={product.quantity}
+                    title={product.title}
+                    image={product.image}
+                    items={product.items}
+                    price={product.price}
+                    pluspro={() => {
+                      product.items++;
+                    }}
+                    minuspro={() => {
+                      product.items--;
+                    }}
+                    addCart={addCart}
+                    removeCart={removeCart}
+                    reset={reset}
+                    addcartproduct={() => {
+                      const listcart = cartproduct.find(
+                        (prod) => prod.id === product._id
+                      );
+                      if (!listcart) {
+                        setCartproduct([
+                          ...cartproduct,
+                          {
+                            key: product._id,
+                            id: product._id,
+                            title: product.title,
+                            image: product.image,
+                            price: product.price,
+                            items: product.items,
+                            itemscart: 1,
+                          },
+                        ]);
+                      } else {
+                        listcart.itemscart++;
+                        listcart.price += product.price;
+                      }
+                    }}
+                    addcartmongo={() => {
+                      // const listcartmongo = cartproduct.find(
+                      //   (prod) => prod.id === product._id
+                      // );
+                      // if (product.items === 0) {
+                      setCartmongo([
+                        ...cartmongo,
                         {
                           key: product._id,
                           id: product._id,
@@ -179,55 +205,30 @@ const App = (props) => {
                           itemscart: 1,
                         },
                       ]);
-                    } else {
-                      listcart.itemscart++;
-                      listcart.price += product.price;
-                    }
-                  }}
-                  addcartmongo={() => {
-                    // const listcartmongo = cartproduct.find(
-                    //   (prod) => prod.id === product._id
-                    // );
-                    // if (product.items === 0) {
-                    setCartmongo([
-                      ...cartmongo,
-                      {
-                        key: product._id,
-                        id: product._id,
-                        title: product.title,
-                        image: product.image,
-                        price: product.price,
-                        items: product.items,
-                        itemscart: 1,
-                      },
-                    ]);
-                    // } else {
-                    //   listcartmongo.itemscart++;
-                    //   listcartmongo.price += product.price;
-                    // }
-                  }}
-                  removecartproduct={() => {
-                    const listcart = cartproduct.find(
-                      (prod) => prod.id === product._id
-                    );
-                    listcart.itemscart--;
-                    listcart.price -= product.price;
-                  }}
-                />
-              ))}
+                      // } else {
+                      //   listcartmongo.itemscart++;
+                      //   listcartmongo.price += product.price;
+                      // }
+                    }}
+                    removecartproduct={() => {
+                      const listcart = cartproduct.find(
+                        (prod) => prod.id === product._id
+                      );
+                      listcart.itemscart--;
+                      listcart.price -= product.price;
+                    }}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-          {/* </Link> */}
-        </Route>
-        <Route path="/manage/">
-          <Crud />
-        </Route>
+          </Route>
 
-        {/* <Route exact path="/:id">
+          {/* <Route exact path="/:id">
         <Description />
       </Route> */}
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+    </div>
   );
 };
 

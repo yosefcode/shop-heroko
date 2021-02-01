@@ -24,17 +24,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 
-// app.use(
-//   "/static",
-//   express.static(path.join(__dirname, "./client/build//static/"))
-// );
-
 // app.get("/*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build"));
-// });
-
-// router.get("/", function (req, res, next) {
-//   res.status(200).send("Hi, It works!");
 // });
 
 // app.get("*", function (req, res) {
