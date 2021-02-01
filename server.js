@@ -21,7 +21,7 @@ const io = socketIo(server);
 dotenv.config();
 app.use(cors());
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 
 // app.use(
@@ -29,9 +29,9 @@ app.use(bodyParser.json());
 //   express.static(path.join(__dirname, "./client/build//static/"))
 // );
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build"));
-});
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build"));
+// });
 
 // router.get("/", function (req, res, next) {
 //   res.status(200).send("Hi, It works!");
