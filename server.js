@@ -27,6 +27,10 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build"));
 });
 
+router.get("/", function (req, res, next) {
+  res.status(200).send("Hi, It works!");
+});
+
 const PORT = process.env.PORT || 7000;
 const URL = process.env.URL;
 
