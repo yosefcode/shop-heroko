@@ -6,7 +6,7 @@ const Manage = () => {
   const [placeholder, setPlaceholder] = useState("הכנס סיסמא");
 
   const openLink = () => {
-    window.open("/Manage");
+    window.open("/api/Manage");
   };
 
   return (
