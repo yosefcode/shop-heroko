@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/static/css/main.8c600118.chunk.css",
-    "main.js": "/static/js/main.ec27fbf5.chunk.js",
-    "main.js.map": "/static/js/main.ec27fbf5.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
-    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
-    "static/css/2.4c4477be.chunk.css": "/static/css/2.4c4477be.chunk.css",
-    "static/js/2.2445b722.chunk.js": "/static/js/2.2445b722.chunk.js",
-    "static/js/2.2445b722.chunk.js.map": "/static/js/2.2445b722.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.b147651e4f5da82ab28a4045bb04b0b0.js": "/precache-manifest.b147651e4f5da82ab28a4045bb04b0b0.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.4c4477be.chunk.css.map": "/static/css/2.4c4477be.chunk.css.map",
-    "static/css/main.8c600118.chunk.css.map": "/static/css/main.8c600118.chunk.css.map",
-    "static/js/2.2445b722.chunk.js.LICENSE.txt": "/static/js/2.2445b722.chunk.js.LICENSE.txt",
-    "static/media/WhatsApp.png": "/static/media/WhatsApp.a22ce110.png",
-    "static/media/call.svg": "/static/media/call.bc503c35.svg",
-    "static/media/cart.jpg": "/static/media/cart.c7a5cce3.jpg",
-    "static/media/mail.png": "/static/media/mail.640fc0ea.png",
-    "static/media/store.png": "/static/media/store.6922e80f.png"
+    "main.css": "./build/index.html/static/css/main.8c600118.chunk.css",
+    "main.js": "./build/index.html/static/js/main.26568f01.chunk.js",
+    "main.js.map": "./build/index.html/static/js/main.26568f01.chunk.js.map",
+    "runtime-main.js": "./build/index.html/static/js/runtime-main.1c97ade5.js",
+    "runtime-main.js.map": "./build/index.html/static/js/runtime-main.1c97ade5.js.map",
+    "static/css/2.4c4477be.chunk.css": "./build/index.html/static/css/2.4c4477be.chunk.css",
+    "static/js/2.598b071a.chunk.js": "./build/index.html/static/js/2.598b071a.chunk.js",
+    "static/js/2.598b071a.chunk.js.map": "./build/index.html/static/js/2.598b071a.chunk.js.map",
+    "index.html": "./build/index.html/index.html",
+    "precache-manifest.74faa26b49297b3ba34f27103e455c69.js": "./build/index.html/precache-manifest.74faa26b49297b3ba34f27103e455c69.js",
+    "service-worker.js": "./build/index.html/service-worker.js",
+    "static/css/2.4c4477be.chunk.css.map": "./build/index.html/static/css/2.4c4477be.chunk.css.map",
+    "static/css/main.8c600118.chunk.css.map": "./build/index.html/static/css/main.8c600118.chunk.css.map",
+    "static/js/2.598b071a.chunk.js.LICENSE.txt": "./build/index.html/static/js/2.598b071a.chunk.js.LICENSE.txt",
+    "static/media/WhatsApp.png": "./build/index.html/static/media/WhatsApp.a22ce110.png",
+    "static/media/call.svg": "./build/index.html/static/media/call.bc503c35.svg",
+    "static/media/cart.jpg": "./build/index.html/static/media/cart.c7a5cce3.jpg",
+    "static/media/mail.png": "./build/index.html/static/media/mail.640fc0ea.png",
+    "static/media/store.png": "./build/index.html/static/media/store.6922e80f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.09b85ec0.js",
+    "static/js/runtime-main.1c97ade5.js",
     "static/css/2.4c4477be.chunk.css",
-    "static/js/2.2445b722.chunk.js",
+    "static/js/2.598b071a.chunk.js",
     "static/css/main.8c600118.chunk.css",
-    "static/js/main.ec27fbf5.chunk.js"
+    "static/js/main.26568f01.chunk.js"
   ]
 }
