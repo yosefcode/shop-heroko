@@ -1,5 +1,7 @@
 {
   "name": "nodejs",
+  "homepage": "https://shop-full.herokuapp.com/",
+
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
