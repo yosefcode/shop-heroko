@@ -14,7 +14,7 @@ const Manage = () => {
   return (
     <div className="manage">
       <div>כניסת מנהל</div>
-      <Link to="/manage">כניסת מנהל</Link>
+      {/* <Link to="/manage">כניסת מנהל</Link> */}
       <div>
         <input
           type="password"
