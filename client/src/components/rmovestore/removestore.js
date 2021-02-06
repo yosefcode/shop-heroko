@@ -5,7 +5,7 @@ import socketIOClient from "socket.io-client";
 
 const Removestore = (props) => {
   // let password = "";
-  // const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   // const [open, setOpen] = useState("open");
   const [productId, setProductId] = useState();
   const [products, setProducts] = useState([]);
@@ -36,61 +36,69 @@ const Removestore = (props) => {
     });
   }, []);
 
+  const alertTimeout = () => {
+    setTimeout(() => setLoaded(false), 3000);
+  };
+
   return (
-    <div className="removestore">
-      <div>בחר מוצר להסרה</div>
-      {/* <div>
-        <input
-          id="input1"
-          type="password"
-          placeholder="הכנס סיסמא"
-          onInput={
-            (e) => (password = e.target.value) // onChange=
-          }
-        ></input>
-        <button
-          className="btn"
-          onClick={() => {
-            if (password === process.env.REACT_APP_PASS) {
-              document.getElementById("input1").value = "";
-              document.getElementById("input1").placeholder = "נכנסת בהצלחה";
-              setLoaded(true);
-              setOpen("close");
-            } else {
-              document.getElementById("input1").value = "";
-              document.getElementById("input1").placeholder = "נסה שוב";
-              setLoaded(false);
-              setOpen("open");
+    <div>
+      {loaded && <div className="divalert">המוצר הוסר בהצלחה</div>}
+      <div className="removestore">
+        <div>בחר מוצר להסרה</div>
+        {/* <div>
+          <input
+            id="input1"
+            type="password"
+            placeholder="הכנס סיסמא"
+            onInput={
+              (e) => (password = e.target.value) // onChange=
             }
-          }}
-        >
-          {open}
-        </button>
-      </div>
-      {loaded && ( */}
-      <div>
-        {products.map((product) => (
-          <button className="btnimg">
-            <img
-              className="imgdel"
-              src={product.image}
-              alt=""
-              onClick={() => setProductId(product._id)}
-            />
+          ></input>
+          <button
+            className="btn"
+            onClick={() => {
+              if (password === process.env.REACT_APP_PASS) {
+                document.getElementById("input1").value = "";
+                document.getElementById("input1").placeholder = "נכנסת בהצלחה";
+                setLoaded(true);
+                setOpen("close");
+              } else {
+                document.getElementById("input1").value = "";
+                document.getElementById("input1").placeholder = "נסה שוב";
+                setLoaded(false);
+                setOpen("open");
+              }
+            }}
+            >
+            {open}
+            </button>
+            </div>
+          {loaded && ( */}
+        <div>
+          {products.map((product) => (
+            <button className="btnimg" key={product._id}>
+              <img
+                className="imgdel"
+                src={product.image}
+                alt=""
+                onClick={() => setProductId(product._id)}
+              />
+            </button>
+          ))}
+          <br />
+          <button
+            className="btn"
+            onClick={() => {
+              removeProduct();
+              setLoaded(true);
+              alertTimeout();
+            }}
+          >
+            מחק מוצר
           </button>
-        ))}
-        <br />
-        <button
-          className="btn"
-          onClick={() => {
-            removeProduct();
-            alert(`המוצר הוסר בהצלחה`);
-          }}
-        >
-          מחק מוצר
-        </button>
+        </div>
+        {/* )} */}
       </div>
-      {/* )} */}
     </div>
   );
 };

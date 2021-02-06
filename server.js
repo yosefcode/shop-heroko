@@ -5,7 +5,6 @@ const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
-var router = express.Router();
 
 const imgerr =
   "https://chefconditor.co.il/wp-content/uploads/2017/08/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA-%D7%9E%D7%95%D7%A6%D7%A8-%D7%97%D7%A1%D7%A8%D7%94-3.jpg";
@@ -17,6 +16,17 @@ const socketIo = require("socket.io");
 const http = require("http");
 const server = http.createServer(app);
 const io = socketIo(server);
+
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 dotenv.config();
 app.use(cors());
@@ -120,6 +130,8 @@ app.delete(`${URL}:id`, async (req, res) => {
     io.emit("DeleteProduct");
     if (!deleteproduct) res.status(404).send("No item found");
   } catch (err) {
+    // res.status(err.res.status);
+    // return res.send(err.message);
     res.status(500).send(err);
   }
 });

@@ -6,11 +6,12 @@
   border-radius: 20px;
   line-height: 35px;
   font-weight: 700;
-  /* top: 50px; */
+  top: 100px;
   position: absolute;
   right: 475px;
   font-size: 20px;
 }
+
 .removestore .btn {
   width: 60%;
   height: 45px;
@@ -25,6 +26,7 @@
   color: rgb(255, 255, 255);
   line-height: normal;
 }
+
 .removestore .btnimg {
   margin: 15px;
   height: 70px;
@@ -34,6 +36,7 @@
   border: 2px solid black;
   position: relative;
 }
+
 .removestore .imgdel {
   margin: -34px;
   height: 68px;
@@ -41,6 +44,7 @@
   border-radius: 8px;
   position: absolute;
 }
+
 .removestore .btnimg:hover {
   transform: scale(1.4);
   border: 2px rgb(61, 158, 16) solid;
@@ -49,4 +53,26 @@
 .removestore .btnimg:focus {
   transform: scale(1.4);
   border: 2px rgb(255, 0, 0) solid;
+}
+
+.divalert {
+  width: 350px;
+  height: auto;
+  border-radius: 20px;
+  line-height: 35px;
+  font-weight: 700;
+  margin: 0 auto;
+  font-size: 30px;
+  animation-name: coloralert;
+  animation-duration: 1.1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes coloralert {
+  0% {
+    color: white;
+  }
+  100% {
+    color: rgb(31, 11, 11);
+  }
 }

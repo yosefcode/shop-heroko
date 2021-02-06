@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./manage.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const Manage = () => {
   const [value, setValue] = useState("");
