@@ -16,6 +16,7 @@ import Cart from "./components/cart/cart";
 // import Cartmongo from "./components/cart mongo/cart";
 import cartimg from "./components/cart/cart.jpg";
 import socketIOClient from "socket.io-client";
+import Cookies from "js-cookie";
 
 const App = (props) => {
   const [products, setProducts] = useState([]);
@@ -66,6 +67,7 @@ const App = (props) => {
   const reset = (product) => {
     products.find((prod1) => (prod1.quantity = product.quantity));
   };
+  Cookies.set("foo", "bar");
 
   return (
     <div>

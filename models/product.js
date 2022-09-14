@@ -18,7 +18,7 @@ const product1 = new Products({
   quantity: 8,
   price: 1000,
   items: 0,
-  description: "aaaa aaaaaaa aaaaaaa aaaaaa aaaaaaa aaaaaa"
+  description: "aaaa aaaaaaa aaaaaaa aaaaaa aaaaaaa aaaaaa",
 });
 
 const product2 = new Products({
@@ -66,10 +66,9 @@ const product6 = new Products({
   items: 0,
 });
 
-
 const product7 = new Products({
   image:
-  "https://www.home-decor.co.il/wp-content/uploads/2020/01/anis-1000.jpg",
+    "https://www.home-decor.co.il/wp-content/uploads/2020/01/anis-1000.jpg",
   title: "כסאות",
   quantity: 25,
   price: 300,
@@ -77,8 +76,7 @@ const product7 = new Products({
 });
 
 const product8 = new Products({
-  image:
-  "https://cdn.groo.co.il/_media/media/24344/241029.jpg",
+  image: "https://cdn.groo.co.il/_media/media/24344/241029.jpg",
   title: "שולחן",
   quantity: 8,
   price: 650,

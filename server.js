@@ -219,13 +219,3 @@ app.post(`${URL}send-mail/`, function (req, res) {
 //     res.status(500).send(err);
 //   }
 // });
-
-// app.get("/api/products/", async (req, res) => {
-//   const products = await models.products.find();
-//   console.log("get");
-//   try {
-//     res.send(products);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
