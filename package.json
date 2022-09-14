@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js ",
-    "build": "CI = node server.js",
     "start-dev": "nodemon server.js",
     "startm": "nodemon servercart.js",
     "heroku-postbuild": "cd client && npm i && npm run build"
